@@ -2,7 +2,7 @@
 
 ## Usage
 
-The following 5 steps can be run separately as the output of each step is already provided in this repository. The first 2 steps require a local storage of the [ASJP dataset](https://github.com/lexibank/asjp) and the [FLDAS dataset](https://hydro1.gesdisc.eosdis.nasa.gov/data/FLDAS/FLDAS_NOAH01_C_GL_M.001/), but you can skip these steps so you do not need to download full datasets.
+The following 5 steps can be run separately as the output of each step is already provided in this repository. `temperature_global.csv` is provided in zip file because its size is too large. The first 2 steps require a local storage of the [ASJP dataset](https://github.com/lexibank/asjp) and the [FLDAS dataset](https://hydro1.gesdisc.eosdis.nasa.gov/data/FLDAS/FLDAS_NOAH01_C_GL_M.001/), but you can skip these steps so you do not need to download full datasets.
 
 ### 1. Extract geometry and sonority data from ASJP
 
@@ -16,7 +16,7 @@ Run `py get_temperature_global.py [FLDAS_path]` to extract global monthy mean te
 
 ### 3. Plot global distribution of temperature and sonority
 
-Run `py plot_global.py`. Plot will be saved as `global.png`.
+(Unzip `temperature_global.zip`.) Run `py plot_global.py`. Plot will be saved as `global.png`.
 
 ### 4. Combine and process temperature and sonority data
 
