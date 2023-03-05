@@ -3,12 +3,12 @@
 ## Results
 
 - [`sonorities.csv`](sonorities.csv): Mean sonority index (MSI) of each filtered doculect. We adapted 5 methods to calculate MSI from ASJP codes:
-  - `index0`: Parker’s scale, from [Sonority in *The Blackwell Companion to Phonology*](https://doi.org/10.1002/9781444335262.wbctp0049)
+  - `index0`: Parker’s scale, from [Sonority](https://doi.org/10.1002/9781444335262.wbctp0049) in *The Blackwell Companion to Phonology*
   - `index1`: Fought’s scale, from [Sonority and climate in a world sample of languages: Findings and prospects](https://doi.org/10.1177/1069397103259439)
-  - `index2`: Clements’ scale, from [The role of the sonority cycle in core syllabification in *Papers in Laboratory Phonology*](https://doi.org/10.1017/cbo9780511627736.017)
+  - `index2`: Clements’ scale, from [The role of the sonority cycle in core syllabification](https://doi.org/10.1017/cbo9780511627736.017) in *Papers in Laboratory Phonology*
   - `index3`: Sonorant index (here obstruent = 1; sonorant = 2)
   - `index4`: Vowel index (here consonant = 1; semivowel = 2; vowel = 3)
-- [`phones.csv`](phones.csv): Extracted phones from filtered doculects (This was not used further in the research)
+- [`phones.csv`](phones.csv): Extracted phones from all doculects (not used further in this research)
 - [`temperatures.csv`](temperatures.csv): Monthly temperature (1982–2022) for each filtered doculect
 - `temperature_global.csv` (contained in [`temperature_global.zip`](temperature_global.zip)): Global 40-year mean monthly temperature.
 - [`data.csv`](data.csv): MSIs and temperature data for each filtered doculect:

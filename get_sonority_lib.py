@@ -224,8 +224,39 @@ def open_doculects(raw_dir):
     return doculects
 
 
-def filter_doculects(doculects):
-    print('Total:', len(doculects), 'doculects')
+def print_doculects_info(doculects):
+    print(
+        'Total:', len(doculects), 'doculects, having',
+        sum([len(doculect.synsets)
+            for doculect in doculects]), 'meanings and',
+        sum([sum([len(synset.words) for synset in doculect.synsets])
+            for doculect in doculects]), 'words',
+    )
+    names = [(
+        d.code_iso,
+        (d.classification_wals or '').split('.')[0],
+        (d.classification_ethnologue or '').split(',')[0],
+        (d.classification_glottolog or '').split(',')[0],
+    ) for d in doculects]
+    counts = [len(set([c[i] for c in names if c[i]])) for i in range(len(names[0]))]
+    # Null language/family names are excluded
+    print(
+        'Corresponding to:',
+        counts[0], 'languages,',
+        counts[1], 'families (WALS),',
+        counts[2], 'families (Ethnologue),',
+        counts[3], 'families (Glottolog)',
+    )
+    print()
+
+
+def filter_doculects(doculects, words_to_include=None):
+    print_doculects_info(doculects)
+    if words_to_include:
+        for d in doculects:
+            d.synsets = [s for s in d.synsets if s.meaning in words_to_include]
+        print(f'After intersection with {len(words_to_include)}:')
+        print_doculects_info(doculects)
     doculects = [d for d in doculects if
                  'Oth' not in d.classification_wals and
                  d.code_iso and  # proto languages
@@ -241,31 +272,8 @@ def filter_doculects(doculects):
                  ] and
                  len(d.synsets) >= 20 and
                  d.latitude is not None]
-    print(
-        'After filtering:',
-        len(doculects), 'doculects,',
-        sum([len(doculect.synsets)
-            for doculect in doculects]), 'meanings in total,',
-        sum([sum([len(synset.words) for synset in doculect.synsets])
-            for doculect in doculects]), 'words in total',
-    )
-
-    names = [(
-        d.code_iso,
-        d.classification_wals.split('.')[0],
-        d.classification_ethnologue.split(
-            ',')[0] if d.classification_ethnologue else '',
-        d.classification_glottolog.split(',')[0],
-    ) for d in doculects]
-    counts = [len(set([c[i] for c in names])) for i in range(len(names[0]))]
-    print(
-        'Corresponding to:',
-        counts[0], 'languages,',
-        counts[1], 'families (WALS),',
-        counts[2], 'families (Ethnologue),',
-        counts[3], 'families (Glottolog)',
-    )
-    print()
+    print(f'After filtering:')
+    print_doculects_info(doculects)
     return doculects
 
 
@@ -298,6 +306,9 @@ def get_phone_counts(doculects):
             for word in synset.words:
                 for phone in word2phones(word):
                     result[phone] = result.get(phone, 0) + 1
+    print('Total types of phones:', len(result.keys()))
+    print('Counts of all phones:', sum(result.values()))
+    print()
     return result
 
 

@@ -19,6 +19,9 @@ d_mac_mean <- d_mac %>% filter(Method == "mean")
 d_mac_med <- d_mac %>% filter(Method == "median")
 d_fam_mean <- d_fam %>% filter(Method == "mean")
 
+
+# Fit models
+
 m_mac_mean <- lm(Index0 ~ T, data = d_mac_mean)
 m_mac_med <- lm(Index0 ~ T, data = d_mac_med)
 m_fam <- lm(Index0_trans ~ T_trans, data = d_fam_mean)
@@ -29,62 +32,78 @@ summary(m_mac_med)
 summary(m_fam)
 summary(m_all)
 
+
+# Plot distribution
+
+order <- d_mac_med[order(d_mac_med$Index0), ]$Macroarea
+d_mac$Macroarea <- factor(d_mac$Macroarea, levels = order) # reorder by medians
+d_all$Macroarea <- factor(d_all$Macroarea, levels = order)
+
+p01 <- ggplot(d_all, aes(x = Macroarea, y = T, color = Macroarea)) +
+  geom_violin(scale = "width", width = 0.8) +
+  geom_boxplot(width = 0.09, lwd = 0.4, outlier.shape = NA, coef = 0) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        legend.position = "none", axis.title.x = element_blank()) +
+  coord_trans(y = scales::exp_trans(1.06)) +
+  scale_y_continuous(breaks = c(-20,-10,0,10,15,20,25,30)) +
+  ylab("MAT (°C)")
+p02 <- ggplot(d_all, aes(x = Macroarea, y = Index0, color = Macroarea)) +
+  geom_violin(scale = "width", width = 0.75) +
+  geom_boxplot(width = 0.09, lwd = 0.4, outlier.shape = NA, coef = 0) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        legend.position = "none", axis.title.x = element_blank()) +
+  ylab("MSI")
+p01 + p02
+# Then, save as PDF (7 * 4 inches)
+
+
+# Plot correlation
+
 e_mac_mean <- ggpredict(m_mac_mean, terms = "T")
 e_mac_med <- ggpredict(m_mac_med, terms = "T")
 e_fam <- ggpredict(m_fam, terms = "T_trans")
 e_all <- ggpredict(m_all, terms = "T_trans")
-
-order <- d_mac_mean[order(d_mac_mean$Index0), ]$Macroarea
-d_mac$Macroarea <- factor(d_mac$Macroarea, levels = order)
-d_all$Macroarea <- factor(d_all$Macroarea, levels = order)
-
-
-# Plot distribution
-
-p01 <- ggplot(d_all, aes(x = Macroarea, y = T, color = Macroarea)) +
-  geom_violin() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        legend.position = "none", axis.title.x = element_blank()) +
-  ylab("MAT")
-p02 <- ggplot(d_all, aes(x = Macroarea, y = Index0, color = Macroarea)) +
-  geom_violin() + geom_boxplot(width = 0.1, outlier.shape = NA, coef = 0) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        legend.position = "none", axis.title.x = element_blank()) +
-  ylab("MSI")
-p01 + p02
-# Save to PDF: 7 * 4 inches
-
-
-# Plot correlation
 
 p1 <- ggplot() +
   geom_line(data = e_mac_mean, aes(x, predicted)) +
   geom_line(data = e_mac_med, aes(x, predicted), linetype = "dashed") +
   geom_point(data = d_mac, aes(T, Index0, color = Macroarea, shape = Method)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
         legend.title = element_blank(),
         legend.spacing.y = unit(-0.5, "cm"), legend.position = c(1.2, 0.5),
         plot.title = element_text(hjust = 0.5)) +
   coord_cartesian(ylim = c(9, 11)) +
   ggtitle("Macroareas") +
-  xlab("MAT") + ylab("MSI")
+  xlab("MAT (°C)") + ylab("MSI")
 p2 <- ggplot() +
   geom_point(data = d_fam_mean, aes(T_trans, Index0_trans), color = "blue", alpha = 0.7) +
   geom_ribbon(data = e_fam, aes(x, ymin = conf.low, ymax = conf.high), alpha = 0.35) +
   geom_line(data = e_fam, aes(x, predicted)) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), plot.title = element_text(hjust = 0.5)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        plot.title = element_text(hjust = 0.5)) +
   ggtitle("Families") +
   xlab("MAT") + ylab("MSI")
 p3 <- ggplot() +
   geom_point(data = d_all, aes(T_trans, Index0_trans), color = "blue", alpha = 0.08) +
   geom_ribbon(data = e_all, aes(x, ymin = conf.low, ymax = conf.high), alpha = 0.35) +
   geom_line(data = e_all, aes(x, predicted)) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), plot.title = element_text(hjust = 0.5)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        plot.title = element_text(hjust = 0.5)) +
   coord_cartesian(xlim = c(-2.2, 2)) +
   ggtitle("All Doculects") +
   xlab("MAT") + ylab("MSI")
 p1 + guide_area() + p2 + p3 + plot_layout(guides = "collect", design = "AAAAB###\nCCCCDDDD")
-# Save to PDF: 6 * 6 inches
+# Then, save as PDF (6 * 6 inches)
 
 
 # Linear correlation between different sonority scales
