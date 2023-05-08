@@ -1,6 +1,7 @@
 from time import time
 import numpy as np
 from netCDF4 import Dataset
+from pathlib import Path
 
 BUF_SIZE = 20 * 1024 * 1024  # 20 MB
 
@@ -30,13 +31,13 @@ def read_names_and_geometries(csv_filename):
         return [line[0] for line in data], [(float(line[1]), float(line[2])) for line in data]
 
 
-def get_temperatures_by_geometries(path, geometries, use_neighbors=True, year_range=range(1982, 2022), month_range=range(1, 13), param='Tair_f_tavg'):
+def get_temperatures_by_geometries(path, geometries, use_neighbors=True, year_range=range(1982, 2023), month_range=range(1, 13), param='Tair_f_tavg'):
     points = set([coord_2_point(i) for i in geometries])
     return get_temperatures_by_points(path, points,
                                       use_neighbors, year_range, month_range, param)
 
 
-def get_temperatures_by_points(path, points, use_neighbors=True, year_range=range(1982, 2022), month_range=range(1, 13), param='Tair_f_tavg'):
+def get_temperatures_by_points(path, points, use_neighbors=True, year_range=range(1982, 2023), month_range=range(1, 13), param='Tair_f_tavg'):
     condition = np.full((1500, 3600), False)
     for point in points:
         condition[point[1]][point[0]] = True
@@ -44,7 +45,7 @@ def get_temperatures_by_points(path, points, use_neighbors=True, year_range=rang
                                          use_neighbors, year_range, month_range, param)
 
 
-def get_temperatures_by_condition(path, condition, use_neighbors=True, year_range=range(1982, 2022), month_range=range(1, 13), param='Tair_f_tavg'):
+def get_temperatures_by_condition(path, condition, use_neighbors=True, year_range=range(1982, 2023), month_range=range(1, 13), param='Tair_f_tavg'):
     # Rebuild list of points from condition matrix
     points = np.where(condition)
     points = np.array([points[1], points[0]]).T
@@ -53,7 +54,7 @@ def get_temperatures_by_condition(path, condition, use_neighbors=True, year_rang
     for year in year_range:
         for month in month_range:
             ym = (year, month)
-            filename = path \
+            filename = Path(path) \
                 / ('%d' % year) \
                 / ('FLDAS_NOAH01_C_GL_M.A%d%02d.001.nc' % (year, month))
             with open(filename, 'rb') as f:

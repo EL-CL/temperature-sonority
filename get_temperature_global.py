@@ -1,7 +1,7 @@
 from time import time
 import get_temperature_lib as lib
-from pathlib import Path
 import numpy as np
+from sys import argv
 
 path = argv[1]
 
