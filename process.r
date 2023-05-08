@@ -68,15 +68,20 @@ e_mac_med <- ggpredict(m_mac_med, terms = "T")
 e_fam <- ggpredict(m_fam, terms = "T_trans")
 e_all <- ggpredict(m_all, terms = "T_trans")
 
+p1_labels <- c("Mean (solid line)", "Median (dashed line)")
 p1 <- ggplot() +
   geom_line(data = e_mac_mean, aes(x, predicted)) +
   geom_line(data = e_mac_med, aes(x, predicted), linetype = "dashed") +
-  geom_point(data = d_mac, aes(T, Index0, color = Macroarea, shape = Method)) +
+  geom_point(data = d_mac, aes(T, Index0, color = Macroarea,
+                               shape = Method, stroke = Method, size = Method)) +
+  scale_shape_manual(labels = p1_labels, values = c(16, 3)) +
+  scale_size_manual(labels = p1_labels, values = c(1.5, 1.1)) +
+  scale_discrete_manual(labels = p1_labels, aesthetics = "stroke", values = c(1, 0.8)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black"),
         legend.title = element_blank(),
-        legend.spacing.y = unit(-0.5, "cm"), legend.position = c(1.2, 0.5),
+        legend.spacing.y = unit(-0.5, "cm"), legend.position = c(1.7, 0.5),
         plot.title = element_text(hjust = 0.5)) +
   coord_cartesian(ylim = c(9, 11)) +
   ggtitle("Macroareas") +
@@ -90,7 +95,7 @@ p2 <- ggplot() +
         axis.text.y = element_text(color = "black"),
         plot.title = element_text(hjust = 0.5)) +
   ggtitle("Families") +
-  xlab("MAT") + ylab("MSI")
+  xlab("MAT (transformed)") + ylab("MSI (transformed)")
 p3 <- ggplot() +
   geom_point(data = d_all, aes(T_trans, Index0_trans), color = "blue", alpha = 0.08) +
   geom_ribbon(data = e_all, aes(x, ymin = conf.low, ymax = conf.high), alpha = 0.35) +
@@ -101,8 +106,8 @@ p3 <- ggplot() +
         plot.title = element_text(hjust = 0.5)) +
   coord_cartesian(xlim = c(-2.2, 2)) +
   ggtitle("All Doculects") +
-  xlab("MAT") + ylab("MSI")
-p1 + guide_area() + p2 + p3 + plot_layout(guides = "collect", design = "AAAAB###\nCCCCDDDD")
+  xlab("MAT (transformed)") + ylab("MSI (transformed)")
+p1 + guide_area() + p2 + p3 + plot_layout(guides = "collect", design = "AAB#\nCCDD")
 # Then, save as PDF (6 * 6 inches)
 
 
@@ -121,6 +126,11 @@ for (i in 0:4) {
 }
 print(r2s)
 
+ggplot(d_all, aes(x = Index0, y = Index4)) +
+  geom_point() +
+  geom_smooth(method = lm)
+m_in0_in4 <- lm(Index4 ~ Index0, data = d_all)
+summary(m_in0_in4)
 
 # Linear correlation between mean annual range or standard deviation
 
