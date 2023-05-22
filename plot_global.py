@@ -5,15 +5,7 @@ import colorsys
 
 
 def read_global_temperature(filename):
-    with open(filename, 'r') as f:
-        next(f)
-        data = [line.strip().split(',') for line in f]
-    x = [int(line[0]) for line in data]
-    y = [int(line[1]) for line in data]
-    v = [[float(i) for i in line[2:]] for line in data]
-    v = np.mean(v, 1)
-    return x, y, v
-
+    return np.genfromtxt(filename, delimiter=',', usemask=True)
 
 def read_sonorities(filename, temperatures_filename):
     with open(filename, 'r') as f:
@@ -38,16 +30,13 @@ def new_cmap(cm_object, saturation_factor, lightness_factor):
     return my_cmap
 
 
-tx, ty, tv = read_global_temperature('temperature_global.csv')
+t = read_global_temperature('temperature_global.csv')
 sx, sy, sv = read_sonorities('sonorities.csv', 'temperatures.csv')
 
-tv_trans = np.power(tv - tv.min() + 0.1, 1.6)
-tv_trans = tv_trans / tv_trans.max()
-# plt.hist(tv, bins=30), plt.show()
-# plt.hist(tv_trans, bins=30), plt.show()
-mat = np.ma.array(np.zeros((1500, 3600)), mask=np.full((1500, 3600), True))
-for i, v in enumerate(tv_trans):
-    mat[ty[i]][tx[i]] = v
+# plt.hist(t.flatten(), bins=30), plt.show()
+t = np.power(t - np.nanmin(t) + 0.1, 1.6)
+t = t / np.nanmax(t)
+# plt.hist(t.flatten(), bins=30), plt.show()
 
 plt.rcParams['figure.figsize'] = (20, 10)
 fig = plt.figure()
@@ -56,7 +45,7 @@ ax_s = fig.add_subplot(111, frame_on=False)
 
 cm_t = new_cmap(plt.cm.inferno, 0.65, 0.65)
 cm_s = new_cmap(plt.cm.coolwarm, 1, 0.9)
-ax_t.imshow(mat, origin='lower', aspect='auto', cmap=cm_t, vmin=-0.5, vmax=1.5)
+ax_t.imshow(t, origin='lower', aspect='auto', cmap=cm_t, vmin=-0.5, vmax=1.5)
 ax_s.scatter(sx, sy, c=sv, cmap=cm_s, s=2)
 
 ax_s.set_xlim(-180, 180)

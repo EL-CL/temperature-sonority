@@ -89,7 +89,9 @@ def get_temperatures_by_condition(path, condition, use_neighbors=True, year_rang
     return Temperatures(list(dct.keys()), points, np.ma.array(list(dct.values())).T)
 
 
-def comma_join(lst):
+def comma_join(lst, do_round=False):
+    if do_round:
+        return ','.join(['%.3f' % i if type(i) == np.float64 else str(i) for i in lst]) + '\n'
     return ','.join([str(i) for i in lst]) + '\n'
 
 
@@ -99,6 +101,18 @@ def write_temperatures_by_points(temperatures: Temperatures, csv_filename):
             ['point x', 'point y'] + ['%d/%d' % i for i in temperatures.year_months]))
         for i, v in enumerate(temperatures.values):
             f.write(comma_join(list(temperatures.points[i]) + list(v)))
+
+
+def write_temperatures_by_points_global(temperatures: Temperatures, csv_filename):
+    vs = np.mean(temperatures.values, 1)
+
+    mat = np.ma.array(np.zeros((1500, 3600)), mask=np.full((1500, 3600), True))
+    for i, v in enumerate(vs):
+        x, y = temperatures.points[i]
+        mat[y][x] = v
+    with open(csv_filename, 'w', BUF_SIZE) as f:
+        for line in mat:
+            f.write(comma_join(line, True))
 
 
 def write_temperatures_by_doculects(names, geometries, temperatures: Temperatures, csv_filename):

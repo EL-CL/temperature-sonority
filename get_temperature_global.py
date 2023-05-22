@@ -12,7 +12,7 @@ temperatures = lib.get_temperatures_by_condition(path, condition, False, range(1
 idxs = ~temperatures.values.mask.flatten()
 points = np.extract(np.stack((idxs, idxs), axis=-1), temperatures.points).reshape(-1, 2)
 
-for i in range(40):
+for i in range(41):
     s = time()
     year = 1982 + i
     temperatures_i = lib.get_temperatures_by_points(path, points, False, range(year, year + 1))
@@ -23,7 +23,7 @@ for i in range(40):
     print(f'Read {year} done,', round(time() - s, 2), 's')
     print()
 
-temperatures.values /= 40
+temperatures.values /= 41
 s = time()
-lib.write_temperatures_by_points(temperatures, 'temperature_global.csv')
+lib.write_temperatures_by_points_global(temperatures, 'temperature_global.csv')
 print(f'Write done,', round(time() - s, 2), 's')

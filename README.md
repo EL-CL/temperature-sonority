@@ -10,7 +10,7 @@
   - `index4`: Vowel index (here consonant = 1; semivowel = 2; vowel = 3)
 - [`phones.csv`](phones.csv): Extracted phones from all doculects (not used further in this research)
 - [`temperatures.csv`](temperatures.csv): Monthly temperature (1982–2022) for each filtered doculect
-- `temperature_global.csv` (contained in [`temperature_global.zip`](temperature_global.zip)): Global 40-year mean monthly temperature.
+- [`temperature_global.csv`](temperatures_global.csv): Global mean annual temperature.
 - [`data.csv`](data.csv): MSIs and temperature data for each filtered doculect:
   - `Index0` to `Index4`: MSIs in 5 methods
   - `T`: Mean annual temperature
@@ -27,7 +27,7 @@
 
 ## Usage
 
-The following 5 steps can be run separately as the output of each step is already provided in this repository. `temperature_global.csv` is provided in zip file because its size is too large. Steps 1 and 2 require a local storage of the [ASJP dataset](https://github.com/lexibank/asjp) and the [FLDAS dataset](https://hydro1.gesdisc.eosdis.nasa.gov/data/FLDAS/FLDAS_NOAH01_C_GL_M.001/), but you can skip these two steps so you do not need to download full datasets.
+The following 5 steps can be run separately as the output of each step is already provided in this repository. Steps 1 and 2 require a local storage of the [ASJP dataset](https://github.com/lexibank/asjp) and the [FLDAS dataset](https://hydro1.gesdisc.eosdis.nasa.gov/data/FLDAS/FLDAS_NOAH01_C_GL_M.001/), but you can skip these two steps so you do not need to download full datasets.
 
 ### 1. Extract geometry and sonority data from ASJP
 
@@ -41,7 +41,7 @@ Run `py get_temperature_global.py [FLDAS_path]` to extract global monthy mean te
 
 ### 3. Plot global distribution of temperature and sonority
 
-(Unzip `temperature_global.zip`.) Run `py plot_global.py`. Plot will be saved as `global.png`.
+Run `py plot_global.py`. Plot will be saved as `global.png`.
 
 ### 4. Combine and process temperature and sonority data
 
