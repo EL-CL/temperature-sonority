@@ -14,9 +14,9 @@
 - [`data.csv`](data.csv): MSIs and temperature data for each filtered doculect:
   - `Index0` to `Index4`: MSIs in 5 methods
   - `T`: Mean annual temperature
-  - `T_max`: Max of 40-year mean monthly temperatures
-  - `T_min`: Min of 40-year mean monthly temperatures
-  - `T_sd`: Standard deviation of monthly temperatures over 40 years
+  - `T_max`: Max of 41-year mean monthly temperatures
+  - `T_min`: Min of 41-year mean monthly temperatures
+  - `T_sd`: Standard deviation of monthly temperatures over 41 years
   - `T_diff`: Mean annual range of temperature
   - `Index0_trans`, etc.: Transformated above data
 - [`data_family.csv`](data_family.csv): MSIs and temperature data for each language family classified by WALS

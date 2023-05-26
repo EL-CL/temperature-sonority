@@ -26,6 +26,8 @@ m_mac_mean <- lm(Index0 ~ T, data = d_mac_mean)
 m_mac_med <- lm(Index0 ~ T, data = d_mac_med)
 m_fam <- lm(Index0_trans ~ T_trans, data = d_fam_mean)
 m_all <- lmer(Index0_trans ~ T_trans + (T_trans | Family), data = d_all)
+m_all_2 <- lmer(Index0_trans ~ T_trans + (1 | Family), data = d_all)
+anova(m_all, m_all_2)  # p < 0.001. Use m_all
 
 summary(m_mac_mean)
 summary(m_mac_med)
@@ -81,7 +83,7 @@ p1 <- ggplot() +
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black"),
         legend.title = element_blank(),
-        legend.spacing.y = unit(-0.5, "cm"), legend.position = c(1.7, 0.5),
+        legend.spacing.y = unit(-0.5, "cm"), legend.margin = margin(),
         plot.title = element_text(hjust = 0.5)) +
   coord_cartesian(ylim = c(9, 11)) +
   ggtitle("Macroareas") +
@@ -145,5 +147,5 @@ m_all_diff <- lmer(Index0_trans ~ T_trans + T_diff + (T_trans | Family), data = 
 m_all_sd <- lmer(Index0_trans ~ T_trans + T_sd + (T_trans | Family), data = d_all)
 summary(m_all_diff)
 summary(m_all_sd)
-anova(m_all_diff, m_all)
-anova(m_all_sd, m_all)
+anova(m_all_diff, m_all)  # p = 0.222
+anova(m_all_sd, m_all)  # p = 0.169

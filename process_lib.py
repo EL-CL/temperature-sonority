@@ -121,7 +121,6 @@ def read_data(temperatures_filename, sonorities_filename):
             ('Lon', float(line[1])),
             ('Lat', float(line[2])),
             ('Macroarea', coord_2_macroarea((float(line[1]), float(line[2])))),
-            # ('Classification', line[3]),
             ('Family', line[3].split('.')[0]),
         ] + [(f'Index{i}', float(v)) for i, v in enumerate(line[6:])] +
         list(process_temperature(temperatures[line[0]]).items())
@@ -164,6 +163,7 @@ def transform_data(data, do_plot=False):
 
 def write_data(data, csv_filename):
     # Do not write longitude and latitude
+    data = sorted(data, key=lambda line: next(iter(line.values())))
     keys = [k for k in data[0].keys() if 'L' not in k]
     result = [list(keys)]
     result += [[str(i[k]) for k in keys] for i in data]
