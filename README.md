@@ -19,6 +19,7 @@
   - `T_sd`: Standard deviation of monthly temperatures over 41 years
   - `T_diff`: Mean annual range of temperature
   - `Index0_trans`, etc.: Transformated above data
+- [`data_genus.csv`](data_genus.csv): MSIs and temperature data for each language “genus” classified by WALS
 - [`data_family.csv`](data_family.csv): MSIs and temperature data for each language family classified by WALS
 - [`data_macroarea.csv`](data_macroarea.csv): MSIs and temperature data for each macroarea (North America, South America, Eurasia, Africa, Greater New Guinea, and Australia)
 - [`global.png`](global.png) (also converted into [`global.pdf`](global.pdf)): Global distribution of MATs and MSIs
@@ -45,14 +46,8 @@ Run `py plot_global.py`. Plot will be saved as `global.png`.
 
 ### 4. Combine and process temperature and sonority data
 
-Run `py process.py`. Results will be saved as `data.csv`, `data_family.csv`, and `data_macroarea.csv`.
+Run `py process.py`. Results will be saved as `data.csv`, `data_genus.csv`, `data_family.csv`, and `data_macroarea.csv`.
 
-### 5. Generate distribution and correlation plot
+### 5. Generate distribution and correlation plot, and more
 
-Run corresponding code blocks in `process.r` in R to:
-
-- Read 3 csv files above and analysis the correlation
-- Plot distribution of temperature and sonority
-- Plot correlation of temperature and sonority
-
-Plots were saved as `distribution.pdf` and `correlation.pdf` in this repository.
+Run corresponding code blocks in `process.r` in R.

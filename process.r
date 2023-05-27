@@ -11,6 +11,7 @@ library(patchwork)
 
 d_mac <- read.csv(file = "data_macroarea.csv")
 d_fam <- read.csv(file = "data_family.csv")
+d_gen <- read.csv(file = "data_genus.csv")
 d_all <- read.csv(file = "data.csv")
 
 d_mac$Macroarea <- sub("Am", "\nAm", d_mac$Macroarea)
@@ -18,6 +19,7 @@ d_all$Macroarea <- sub("Am", "\nAm", d_all$Macroarea)
 d_mac_mean <- d_mac %>% filter(Method == "mean")
 d_mac_med <- d_mac %>% filter(Method == "median")
 d_fam_mean <- d_fam %>% filter(Method == "mean")
+d_gen_mean <- d_gen %>% filter(Method == "mean")
 
 
 # Fit models
@@ -25,13 +27,17 @@ d_fam_mean <- d_fam %>% filter(Method == "mean")
 m_mac_mean <- lm(Index0 ~ T, data = d_mac_mean)
 m_mac_med <- lm(Index0 ~ T, data = d_mac_med)
 m_fam <- lm(Index0_trans ~ T_trans, data = d_fam_mean)
+m_gen <- lmer(Index0_trans ~ T_trans + (T_trans | Family), data = d_gen)
+m_gen_1 <- lmer(Index0_trans ~ T_trans + (1 | Family), data = d_gen)
 m_all <- lmer(Index0_trans ~ T_trans + (T_trans | Family), data = d_all)
-m_all_2 <- lmer(Index0_trans ~ T_trans + (1 | Family), data = d_all)
-anova(m_all, m_all_2)  # p < 0.001. Use m_all
+m_all_1 <- lmer(Index0_trans ~ T_trans + (1 | Family), data = d_all)
+anova(m_gen, m_gen_1)  # p < 0.001. Use m_gen
+anova(m_all, m_all_1)  # p < 0.001. Use m_all
 
 summary(m_mac_mean)
 summary(m_mac_med)
 summary(m_fam)
+summary(m_gen)
 summary(m_all)
 
 
@@ -60,7 +66,7 @@ p02 <- ggplot(d_all, aes(x = Macroarea, y = Index0, color = Macroarea)) +
         legend.position = "none", axis.title.x = element_blank()) +
   ylab("MSI")
 p01 + p02
-# Then, save as PDF (7 * 4 inches)
+# Then, save as distribution.pdf (7 * 4 inches)
 
 
 # Plot correlation
@@ -68,6 +74,7 @@ p01 + p02
 e_mac_mean <- ggpredict(m_mac_mean, terms = "T")
 e_mac_med <- ggpredict(m_mac_med, terms = "T")
 e_fam <- ggpredict(m_fam, terms = "T_trans")
+e_gen <- ggpredict(m_gen, terms = "T_trans")
 e_all <- ggpredict(m_all, terms = "T_trans")
 
 p1_labels <- c("Mean (solid line)", "Median (dashed line)")
@@ -110,7 +117,19 @@ p3 <- ggplot() +
   ggtitle("All Doculects") +
   xlab("MAT (transformed)") + ylab("MSI (transformed)")
 p1 + guide_area() + p2 + p3 + plot_layout(guides = "collect", design = "AAB#\nCCDD")
-# Then, save as PDF (6 * 6 inches)
+# Then, save as correlation.pdf (6 * 6 inches)
+
+ggplot() +
+  geom_point(data = d_gen_mean, aes(T_trans, Index0_trans), color = "blue", alpha = 0.7) +
+  geom_ribbon(data = e_gen, aes(x, ymin = conf.low, ymax = conf.high), alpha = 0.35) +
+  geom_line(data = e_gen, aes(x, predicted)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Genera") +
+  xlab("MAT (transformed)") + ylab("MSI (transformed)")
+# Then, save as correlation_genera.pdf (4 * 4 inches)
 
 
 # Linear correlation between different sonority scales
@@ -134,18 +153,66 @@ ggplot(d_all, aes(x = Index0, y = Index4)) +
 m_in0_in4 <- lm(Index4 ~ Index0, data = d_all)
 summary(m_in0_in4)
 
+
 # Linear correlation between mean annual range or standard deviation
 
-m_diff <- lm(T_diff ~ T, data = d_all)
-m_sd <- lm(T_sd ~ T, data = d_all)
-summary(m_diff)$r.squared
-summary(m_sd)$r.squared
-ggplot(d_all, aes(x = T, y = T_diff)) + geom_point()
-ggplot(d_all, aes(x = T, y = T_sd)) + geom_point()
+m_all_diff_sd <- lm(T_sd ~ T_diff, data = d_all)
+summary(m_all_diff_sd)
 
-m_all_diff <- lmer(Index0_trans ~ T_trans + T_diff + (T_trans | Family), data = d_all)
-m_all_sd <- lmer(Index0_trans ~ T_trans + T_sd + (T_trans | Family), data = d_all)
+m_fam_diff_0 <- lm(Index0_trans ~ T_trans * T_diff, data = d_fam)
+m_fam_diff_1 <- lm(Index0_trans ~ T_trans + T_diff, data = d_fam)
+anova(m_fam_diff_0, m_fam_diff_1)  # p = 0.216. Use m_fam_diff_1
+summary(m_fam_diff_1)
+
+m_fam_sd_0 <- lm(Index0_trans ~ T_trans * T_sd, data = d_fam)
+m_fam_sd_1 <- lm(Index0_trans ~ T_trans + T_sd, data = d_fam)
+anova(m_fam_sd_0, m_fam_sd_1)  # p = 0.170. Use m_fam_sd_1
+summary(m_fam_sd_1)
+
+m_fam_diff <- lm(T_diff ~ T, data = d_fam)
+m_fam_sd <- lm(T_sd ~ T, data = d_fam)
+m_all_diff <- lm(T_diff ~ T, data = d_all)
+m_all_sd <- lm(T_sd ~ T, data = d_all)
+summary(m_fam_diff)
+summary(m_fam_sd)
 summary(m_all_diff)
 summary(m_all_sd)
-anova(m_all_diff, m_all)  # p = 0.222
-anova(m_all_sd, m_all)  # p = 0.169
+
+p1 <- ggplot(d_fam, aes(T, T_diff)) +
+  geom_point(color = "blue", alpha = 0.7) +
+  geom_smooth(method = lm, color = "black", se = F) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Families") +
+  xlab("MAT") + ylab("Mean annual range")
+p2 <- ggplot(d_fam, aes(T, T_sd)) +
+  geom_point(color = "blue", alpha = 0.7) +
+  geom_smooth(method = lm, color = "black", se = F) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Families") +
+  xlab("MAT") + ylab("Standard deviation")
+p3 <- ggplot(d_all, aes(T, T_diff)) +
+  geom_point(color = "blue", alpha = 0.08) +
+  geom_smooth(method = lm, color = "black", se = F) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("All Doculects") +
+  xlab("MAT") + ylab("Mean annual range")
+p4 <- ggplot(d_all, aes(T, T_sd)) +
+  geom_point(color = "blue", alpha = 0.08) +
+  geom_smooth(method = lm, color = "black", se = F) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("All Doculects") +
+  xlab("MAT") + ylab("Standard deviation")
+(p1 + p2) / (p3 + p4)
+# Then, save as range.pdf (6 * 6 inches)

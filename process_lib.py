@@ -122,6 +122,7 @@ def read_data(temperatures_filename, sonorities_filename):
             ('Lat', float(line[2])),
             ('Macroarea', coord_2_macroarea((float(line[1]), float(line[2])))),
             ('Family', line[3].split('.')[0]),
+            ('Genus', line[3]),
         ] + [(f'Index{i}', float(v)) for i, v in enumerate(line[6:])] +
         list(process_temperature(temperatures[line[0]]).items())
     ) for line in data if line[0] in temperatures]
@@ -143,12 +144,14 @@ def process_temperature(temperatures):
 
 def grouped_by(data, key):
     num_keys = [k for k in data[0].keys() if 'Index' in k or 'T' in k]
+    families = [k for k in data[0].keys() if 'Index' in k or 'T' in k]
     names = set([d[key] for d in data])
-    return [dict([(key, name)] +
-                 [(k, func([i[k] for i in data if i[key] == name]))
-                  for k in num_keys] +
-                 [('Method', method)]
-                 ) for name in names for (method, func) in [('mean', np.average), ('median', np.median)]]
+    return [dict(
+        [(key, name)] +
+        ([('Family', next(i['Family'] for i in data if i[key] == name))] if key == 'Genus' else []) +
+        [(k, func([i[k] for i in data if i[key] == name])) for k in num_keys] +
+        [('Method', method)]
+    ) for name in names for (method, func) in [('mean', np.average), ('median', np.median)]]
 
 
 def transform_data(data, do_plot=False):
@@ -166,7 +169,8 @@ def write_data(data, csv_filename):
     data = sorted(data, key=lambda line: next(iter(line.values())))
     keys = [k for k in data[0].keys() if 'L' not in k]
     result = [list(keys)]
-    result += [[str(i[k]) for k in keys] for i in data]
+    result += [['%.4f' % i[k] if type(i[k]) == np.float64 else i[k]
+                for k in keys] for i in data]
     with open(csv_filename, 'w') as f:
         f.writelines([','.join([str(i) for i in line]) + '\n'
                       for line in result])
