@@ -5,9 +5,11 @@ library(ggeffects)
 library(dplyr)
 library(effects)
 library(patchwork)
+library(tibble)
 
 
 # Read csv files
+# ==============
 
 d_mac <- read.csv(file = "data_macroarea.csv")
 d_fam <- read.csv(file = "data_family.csv")
@@ -23,6 +25,7 @@ d_gen_mean <- d_gen %>% filter(Method == "mean")
 
 
 # Fit models
+# ==========
 
 m_mac_mean <- lm(Index0 ~ T, data = d_mac_mean)
 m_mac_med <- lm(Index0 ~ T, data = d_mac_med)
@@ -42,6 +45,7 @@ summary(m_all)
 
 
 # Plot distribution
+# =================
 
 order <- d_mac_med[order(d_mac_med$Index0), ]$Macroarea
 d_mac$Macroarea <- factor(d_mac$Macroarea, levels = order) # reorder by medians
@@ -70,6 +74,7 @@ p01 + p02
 
 
 # Plot correlation
+# ================
 
 e_mac_mean <- ggpredict(m_mac_mean, terms = "T")
 e_mac_med <- ggpredict(m_mac_med, terms = "T")
@@ -129,32 +134,102 @@ ggplot() +
         plot.title = element_text(hjust = 0.5)) +
   ggtitle("Genera") +
   xlab("MAT (transformed)") + ylab("MSI (transformed)")
-# Then, save as correlation_genera.pdf (4 * 4 inches)
+# Then, save as correlation_genera.pdf (4 * 4 inches) (for SI)
 
 
-# Linear correlation between different sonority scales
+# Correlation with word length
+# ============================
+
+m_s_wl_mac <- lm(Index0 ~ WL,  data = d_mac_med)
+m_t_wl_mac <- lm(WL ~ T, data = d_mac_med)
+m_s_wl_fam <- lm(Index0_trans ~ WL,  data = d_fam_mean)
+m_t_wl_fam <- lm(WL ~ T_trans, data = d_fam_mean)
+m_s_wl_all <- lm(Index0 ~ WL,  data = d_all)
+m_t_wl_all <- lm(WL ~ T_trans, data = d_all)
+summary(m_s_wl_mac)
+summary(m_t_wl_mac)
+summary(m_s_wl_fam)
+summary(m_t_wl_fam)
+summary(m_s_wl_all)
+summary(m_t_wl_all)
+
+p1 <- ggplot(d_mac_med, aes(WL, Index0)) +
+  geom_point(color = "blue") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab('Mean word length') + ylab('MSI')
+p2 <- ggplot(d_mac_med, aes(T, WL)) +
+  geom_point(color = "blue") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab('MAT (°C)') + ylab('Mean word length')
+p3 <- ggplot(d_fam_mean, aes(WL, Index0_trans)) +
+  geom_point(color = "blue", alpha = 0.6) +
+  geom_smooth(method = lm, color = "black", se = F) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab('Mean word length') + ylab('MSI (transformed)')
+p4 <- ggplot(d_fam_mean, aes(T_trans, WL)) +
+  geom_point(color = "blue", alpha = 0.6) +
+  geom_smooth(method = lm, color = "black", se = F) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab('MAT (transformed)') + ylab('Mean word length')
+p1 + p2 + p3 + p4  # Unused
+p3 + p4
+# Then, save as word_length.pdf (6 * 3 inches)
+
+m_wl_fam_1 <- lm(Index0_trans ~ T_trans * WL, data = d_fam_mean)
+m_wl_fam_2 <- lm(Index0_trans ~ T_trans + WL, data = d_fam_mean)
+anova(m_wl_fam_1, m_wl_fam_2)  # Not significant. Use 2
+m_wl_fam_3 <- lm(Index0_trans ~ T_trans, data = d_fam_mean)
+m_wl_fam_4 <- lm(Index0_trans ~ WL, data = d_fam_mean)
+anova(m_wl_fam_2, m_wl_fam_3)  # Significant. Use 2
+anova(m_wl_fam_2, m_wl_fam_4)  # Significant. Use 2
+summary(m_wl_fam_2)
+
+# Unused
+m_wl_all_1 <- lmer(Index0_trans ~ T_trans * WL + (T_trans * WL | Family), data = d_all)
+m_wl_all_2 <- lmer(Index0_trans ~ T_trans * WL + (T_trans + WL | Family), data = d_all)
+m_wl_all_3 <- lmer(Index0_trans ~ T_trans + WL + (T_trans * WL | Family), data = d_all)
+m_wl_all_4 <- lmer(Index0_trans ~ T_trans + WL + (T_trans + WL | Family), data = d_all)
+m_wl_all_5 <- lmer(Index0_trans ~ T_trans + (T_trans * WL | Family), data = d_all)
+anova(m_wl_all_1, m_wl_all_2)  # Significant. Use 1
+anova(m_wl_all_1, m_wl_all_3)  # Not significant. Use 3
+anova(m_wl_all_3, m_wl_all_4)  # Significant. Use 3
+anova(m_wl_all_3, m_wl_all_5)  # Significant. Use 3
+summary(m_wl_all_3)
+
+
+# Linear correlation between different sonority scales (for SI)
+# =============================================================
 
 r2s <- matrix(0, 5, 5)
-r2s_trans <- matrix(0, 5, 5)
+ps <- matrix(0, 5, 5)
 for (i in 0:4) {
   for (j in 0:4) {
     if (i == j) next
     fomula <- paste("Index", i, " ~ ", "Index", j, sep = "")
     fomula_trans <- paste("Index", i, "_trans ~ ", "Index", j, "_trans", sep = "")
     r2s[i + 1, j + 1] <- summary(lm(fomula, data = d_all))$r.squared
-    r2s_trans[i + 1, j + 1] <- summary(lm(fomula_trans, data = d_all))$r.squared
+    ps[i + 1, j + 1] <- summary(lm(fomula, data = d_all))$coefficients[8]
   }
 }
 print(r2s)
+print(ps)
 
-ggplot(d_all, aes(x = Index0, y = Index4)) +
-  geom_point() +
-  geom_smooth(method = lm)
+ggplot(d_all, aes(x = Index1, y = Index3)) + geom_point() + geom_smooth(method = lm)
+ggplot(d_all, aes(x = Index0, y = Index4)) + geom_point() + geom_smooth(method = lm)
 m_in0_in4 <- lm(Index4 ~ Index0, data = d_all)
 summary(m_in0_in4)
 
 
 # Linear correlation between mean annual range or standard deviation
+# ==================================================================
 
 m_all_diff_sd <- lm(T_sd ~ T_diff, data = d_all)
 summary(m_all_diff_sd)
@@ -215,4 +290,4 @@ p4 <- ggplot(d_all, aes(T, T_sd)) +
   ggtitle("All Doculects") +
   xlab("MAT") + ylab("Standard deviation")
 (p1 + p2) / (p3 + p4)
-# Then, save as range.pdf (6 * 6 inches)
+# Then, save as range.pdf (6 * 6 inches) (for SI)

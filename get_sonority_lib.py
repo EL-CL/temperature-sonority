@@ -52,7 +52,7 @@ phone2base_and_types_cache = {}
 word2phones_cache = {}
 
 
-def set_index_maps(phones, scale_no, index_for_click):
+def set_index_maps(scale_no, index_for_click):
     monophone2index.clear()
     phone2index_cache.clear()
     phone2base_and_types_cache.clear()
@@ -61,10 +61,8 @@ def set_index_maps(phones, scale_no, index_for_click):
         for phone in e[0].replace(' ', ''):
             if phone not in monophone2index:
                 monophone2index[phone] = e[1][scale_no]
-    for phone in phones:
-        monophone2index[phone] = phone2index(phone)
-        if index_for_click and monophone2type[phone] == 'click':
-            monophone2index[phone] = index_for_click
+    if index_for_click:
+        monophone2index['!'] = index_for_click
 
 
 def phone2index(phone):
@@ -164,25 +162,26 @@ def word2phones(word):
     return phones
 
 
-def word2index(word, word2index_cache):
+def word2index(word, word2index_cache, is_word_length=False):
     if type(word) is not str:
         word = word.form
     if word not in word2index_cache:
         word2index_cache[word] = \
-            average([phone2index(i) for i in word2phones(word)])
+            average([phone2index(i) for i in word2phones(word)]) \
+            if not is_word_length else len(word2phones(word))
     return word2index_cache[word]
 
 
-def doculect2index(doculect, average_by_meaning, with_loan, word2index_cache):
+def doculect2index(doculect, average_by_meaning, with_loan, word2index_cache, is_word_length=False):
     if average_by_meaning:
         indices = []
         for synset in doculect.synsets:
-            synset_indices = [word2index(i, word2index_cache)
+            synset_indices = [word2index(i, word2index_cache, is_word_length)
                               for i in synset.words if with_loan or not i.loan]
             if synset_indices:
                 indices.append(average(synset_indices))
     else:
-        indices = [word2index(i, word2index_cache)
+        indices = [word2index(i, word2index_cache, is_word_length)
                    for synset in doculect.synsets
                    for i in synset.words if with_loan or not i.loan]
     return average(indices)
@@ -238,7 +237,8 @@ def print_doculects_info(doculects):
         (d.classification_ethnologue or '').split(',')[0],
         (d.classification_glottolog or '').split(',')[0],
     ) for d in doculects]
-    counts = [len(set([c[i] for c in names if c[i]])) for i in range(len(names[0]))]
+    counts = [len(set([c[i] for c in names if c[i]]))
+              for i in range(len(names[0]))]
     # Null language/family names are excluded
     print(
         'Corresponding to:',
@@ -312,18 +312,78 @@ def get_phone_counts(doculects):
     return result
 
 
-def get_sonority_indices(doculects, average_by_meaning, with_loan, scale_no, phones, index_for_click):
+def get_word_structures(doculects):
+    set_index_maps(0, 1)  # Use C-V map
+    result = {}
+    for doculect in doculects:
+        for synset in doculect.synsets:
+            for word in synset.words:
+                word = ''.join(['V' if phone2index(i) > 6 else 'C'
+                                for i in word2phones(word)])
+                result[word] = result.get(word, 0) + 1
+    print('Total types of word structures:', len(result))
+    print('Counts of all words:', sum(result.values()))
+    print()
+    return result
+
+
+def write_word_structures(structures, csv_filename):
+    def get_ratio(cs, vs):
+        return '%.2f' % (cs / vs) if vs else 'C-only'
+
+    result = [['structure', 'length', 'C-V ratio', 'count']]
+    lines = [[
+        s,
+        len(s),
+        get_ratio(s.count('C'), s.count('V')),
+        structures[s],
+    ] for s in structures]
+    lines = sorted(lines, key=lambda l: l[0])
+    lines = sorted(lines, key=lambda l: l[1])
+    lines = sorted(lines, key=lambda l: l[3], reverse=True)
+    lines = [[str(i) for i in line] for line in lines]
+    result += lines
+    with open(csv_filename, 'w') as f:
+        f.writelines([','.join(line) + '\n' for line in result])
+
+    grouped = {}
+    for s in structures:
+        l = len(s)
+        if l not in grouped:
+            grouped[l] = [0, 0, 0]  # count, Cs, Vs
+        grouped[l][0] += structures[s]
+        grouped[l][1] += s.count('C') * structures[s]
+        grouped[l][2] += s.count('V') * structures[s]
+    result = [['length', 'C-V ratio', 'count']]
+    lines = [[
+        k,
+        get_ratio(v[1], v[2]),
+        v[0],
+    ] for k, v in grouped.items()]
+    lines = sorted(lines, key=lambda l: l[0])
+    lines = [[str(i) for i in line] for line in lines]
+    result += lines
+    with open(csv_filename.replace('.csv', '_grouped.csv'), 'w') as f:
+        f.writelines([','.join(line) + '\n' for line in result])
+
+
+def get_sonority_indices(doculects, average_by_meaning, with_loan, scale_no, index_for_click):
     word2index_cache = {}
-    set_index_maps(phones, scale_no, index_for_click)
+    set_index_maps(scale_no, index_for_click)
     return [doculect2index(d, average_by_meaning, with_loan, word2index_cache) for d in doculects]
 
 
-def get_all_sonority_indices(doculects, average_by_meaning, with_loan, phones, indices_for_click):
+def get_word_lengths(doculects, average_by_meaning, with_loan):
+    word2index_cache = {}
+    return [doculect2index(d, average_by_meaning, with_loan, word2index_cache, True) for d in doculects]
+
+
+def get_all_sonority_indices(doculects, average_by_meaning, with_loan, indices_for_click):
     scale_nos = range(len(sonority_scales[0][1]))
     if not indices_for_click:
         indices_for_click = [None for _ in scale_nos]
     return [get_sonority_indices(doculects, average_by_meaning, with_loan,
-                                 scale_no, phones, indices_for_click[scale_no])
+                                 scale_no, indices_for_click[scale_no])
             for scale_no in scale_nos]
 
 
@@ -331,8 +391,8 @@ def get_geometries(doculects):
     return [Point((d.longitude, d.latitude)) for d in doculects]
 
 
-def write_geometries_and_indices(doculects, all_sonority_indices, geometries, csv_filename):
-    result = [['doculect name', 'longitude', 'latitude', 'classification', 'meaning count', 'word count'] +
+def write_geometries_and_indices(doculects, all_sonority_indices, word_lengths, geometries, csv_filename):
+    result = [['doculect name', 'longitude', 'latitude', 'classification', 'meaning count', 'word count', 'mean word length'] +
               ['index' + str(i) for i in range(len(all_sonority_indices))]]
     result += [
         [
@@ -342,6 +402,7 @@ def write_geometries_and_indices(doculects, all_sonority_indices, geometries, cs
             doculects[i].classification_wals,
             str(len(doculects[i].synsets)),
             str(sum([len(synset.words) for synset in doculects[i].synsets])),
+            '%.4f' % word_lengths[i],
         ] +
         ['%.4f' % sonority_indices[i]
             for sonority_indices in all_sonority_indices]

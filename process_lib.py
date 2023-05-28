@@ -123,7 +123,8 @@ def read_data(temperatures_filename, sonorities_filename):
             ('Macroarea', coord_2_macroarea((float(line[1]), float(line[2])))),
             ('Family', line[3].split('.')[0]),
             ('Genus', line[3]),
-        ] + [(f'Index{i}', float(v)) for i, v in enumerate(line[6:])] +
+            ('WL', float(line[6])),
+        ] + [(f'Index{i}', float(v)) for i, v in enumerate(line[7:])] +
         list(process_temperature(temperatures[line[0]]).items())
     ) for line in data if line[0] in temperatures]
     print('Doculects count:', len(data))
@@ -143,8 +144,7 @@ def process_temperature(temperatures):
 
 
 def grouped_by(data, key):
-    num_keys = [k for k in data[0].keys() if 'Index' in k or 'T' in k]
-    families = [k for k in data[0].keys() if 'Index' in k or 'T' in k]
+    num_keys = [k for k in data[0].keys() if 'Index' in k or 'T' in k or 'WL' in k]
     names = set([d[key] for d in data])
     return [dict(
         [(key, name)] +
@@ -159,7 +159,7 @@ def transform_data(data, do_plot=False):
         transformed = transform([d[key] for d in data], key, do_plot)[0]
         for i, d in enumerate(data):
             d[key + '_trans'] = transformed[i]
-    num_keys = [k for k in data[0].keys() if 'Index' in k or 'T' in k]
+    num_keys = [k for k in data[0].keys() if 'Index' in k or 'T' in k or 'WL' in k]
     for k in num_keys:
         transform_key(k)
 
@@ -167,7 +167,7 @@ def transform_data(data, do_plot=False):
 def write_data(data, csv_filename):
     # Do not write longitude and latitude
     data = sorted(data, key=lambda line: next(iter(line.values())))
-    keys = [k for k in data[0].keys() if 'L' not in k]
+    keys = [k for k in data[0].keys() if k not in ['Lon', 'Lat']]
     result = [list(keys)]
     result += [['%.4f' % i[k] if type(i[k]) == np.float64 else i[k]
                 for k in keys] for i in data]
