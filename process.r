@@ -291,3 +291,79 @@ p4 <- ggplot(d_all, aes(T, T_sd)) +
   xlab("MAT") + ylab("Standard deviation")
 (p1 + p2) / (p3 + p4)
 # Then, save as range.pdf (6 * 6 inches) (for SI)
+
+
+# Plot correlations by language family (for SI)
+# =============================================
+
+top_num <- 25
+fam_count <- d_all %>% group_by(Family) %>% summarise(Count = n()) %>% arrange(desc(Count))
+top_families <- fam_count$Family[1:top_num]
+
+full_family_names <- c(
+  "NC"  = "Niger-Congo",
+  "An"  = "Austronesian",
+  "ST"  = "Sino-Tibetan",
+  "TNG" = "Trans-New Guinea",
+  "AA"  = "Afro-Asiatic",
+  "IE"  = "Indo-European",
+  "AuA" = "Austro-Asiatic",
+  "PN"  = "Pama-Nyungan",
+  "TK"  = "Tai-Kadai",
+  "Tor" = "Torricelli",
+  "Man" = "Mande",
+  "CSu" = "Central Sudanic",
+  "Alt" = "Altaic",
+  "ESu" = "Eastern Sudanic",
+  "OM"  = "Oto-Manguean",
+  "May" = "Mayan",
+  "UA"  = "Uto-Aztecan",
+  "Dra" = "Dravidian",
+  "GWB" = "Greater West Bomberai",
+  "Sep" = "Sepik",
+  "Dog" = "Dogon",
+  "Arw" = "Arawakan",
+  "Que" = "Quechuan",
+  "NDa" = "Nakh-Daghestanian",
+  "Ura" = "Uralic")
+
+temperature_results <- character(top_num)
+word_length_results <- character(top_num)
+labels <- character(top_num)
+names(labels) <- top_families
+for (i in 1:top_num) {
+  family_i <- top_families[i]
+  filtered <- filter(d_all, Family == family_i)
+  model <- lm(Index0_trans ~ T_trans, data = filtered)
+  s <- summary(model)
+  temperature_results[i] <- paste(full_family_names[family_i], nrow(filtered),
+                                  s$coefficients[2], s$r.squared, s$coefficients[8])
+  model <- lm(Index0_trans ~ WL, data = filtered)
+  s <- summary(model)
+  word_length_results[i] <- paste(full_family_names[family_i], nrow(filtered),
+                                  s$coefficients[2], s$r.squared, s$coefficients[8])
+  labels[i] <- paste(full_family_names[family_i], ": ", nrow(filtered), sep = "")
+}
+# family name, number of doculects, estimate slope, r^2, p value
+print(temperature_results)
+print(word_length_results)
+
+ggplot(data = filter(d_all, Family %in% top_families), aes(T_trans, Index0_trans)) +
+  geom_point(na.rm = T, color = "blue", alpha = 0.1) +
+  geom_smooth(method = lm, color = "black", se = F, linewidth = 0.5) +
+  facet_wrap( ~ Family, labeller = labeller(Family = labels)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab("MAT (transformed)") + ylab("MSI (transformed)")
+# Then, save as correlation_by_family.pdf (8 * 8 inches)
+
+ggplot(data = filter(d_all, Family %in% top_families), aes(WL, Index0_trans)) +
+  geom_point(na.rm = T, color = "blue", alpha = 0.1) +
+  geom_smooth(method = lm, color = "black", se = F, linewidth = 0.5) +
+  facet_wrap( ~ Family, labeller = labeller(Family = labels)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab("Mean word length") + ylab("MSI (transformed)")
+# Then, save as word_length_by_family.pdf (8 * 8 inches)
