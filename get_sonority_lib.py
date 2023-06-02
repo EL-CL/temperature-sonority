@@ -327,7 +327,7 @@ def get_word_structures(doculects):
     return result
 
 
-def write_word_structures(structures, csv_filename):
+def write_word_structures(structures, word_structures_filename, word_lengths_filename):
     def get_ratio(cs, vs):
         return '%.2f' % (cs / vs) if vs else 'C-only'
 
@@ -343,7 +343,7 @@ def write_word_structures(structures, csv_filename):
     lines = sorted(lines, key=lambda l: l[3], reverse=True)
     lines = [[str(i) for i in line] for line in lines]
     result += lines
-    with open(csv_filename, 'w') as f:
+    with open(word_structures_filename, 'w') as f:
         f.writelines([','.join(line) + '\n' for line in result])
 
     grouped = {}
@@ -363,7 +363,7 @@ def write_word_structures(structures, csv_filename):
     lines = sorted(lines, key=lambda l: l[0])
     lines = [[str(i) for i in line] for line in lines]
     result += lines
-    with open(csv_filename.replace('.csv', '_grouped.csv'), 'w') as f:
+    with open(word_lengths_filename, 'w') as f:
         f.writelines([','.join(line) + '\n' for line in result])
 
 

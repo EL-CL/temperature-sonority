@@ -23,6 +23,10 @@ d_mac_med <- d_mac %>% filter(Method == "median")
 d_fam_mean <- d_fam %>% filter(Method == "mean")
 d_gen_mean <- d_gen %>% filter(Method == "mean")
 
+order <- d_mac_med[order(d_mac_med$Index0), ]$Macroarea
+d_mac$Macroarea <- factor(d_mac$Macroarea, levels = order) # reorder by medians
+d_all$Macroarea <- factor(d_all$Macroarea, levels = order)
+
 
 # Fit models
 # ==========
@@ -46,10 +50,6 @@ summary(m_all)
 
 # Plot distribution
 # =================
-
-order <- d_mac_med[order(d_mac_med$Index0), ]$Macroarea
-d_mac$Macroarea <- factor(d_mac$Macroarea, levels = order) # reorder by medians
-d_all$Macroarea <- factor(d_all$Macroarea, levels = order)
 
 p01 <- ggplot(d_all, aes(x = Macroarea, y = T, color = Macroarea)) +
   geom_violin(scale = "width", width = 0.8) +
@@ -134,7 +134,7 @@ ggplot() +
         plot.title = element_text(hjust = 0.5)) +
   ggtitle("Genera") +
   xlab("MAT (transformed)") + ylab("MSI (transformed)")
-# Then, save as correlation_genera.pdf (4 * 4 inches) (for SI)
+# Then, save as correlation_genera.pdf (4 * 4 inches) [not used]
 
 
 # Correlation with word length
@@ -210,6 +210,8 @@ summary(m_wl_all_3)
 
 r2s <- matrix(0, 5, 5)
 ps <- matrix(0, 5, 5)
+r2s_trans <- matrix(0, 5, 5)
+ps_trans <- matrix(0, 5, 5)
 for (i in 0:4) {
   for (j in 0:4) {
     if (i == j) next
@@ -217,10 +219,14 @@ for (i in 0:4) {
     fomula_trans <- paste("Index", i, "_trans ~ ", "Index", j, "_trans", sep = "")
     r2s[i + 1, j + 1] <- summary(lm(fomula, data = d_all))$r.squared
     ps[i + 1, j + 1] <- summary(lm(fomula, data = d_all))$coefficients[8]
+    r2s_trans[i + 1, j + 1] <- summary(lm(fomula_trans, data = d_all))$r.squared
+    ps_trans[i + 1, j + 1] <- summary(lm(fomula_trans, data = d_all))$coefficients[8]
   }
 }
 print(r2s)
 print(ps)
+print(r2s_trans)
+print(ps_trans)
 
 ggplot(d_all, aes(x = Index1, y = Index3)) + geom_point() + geom_smooth(method = lm)
 ggplot(d_all, aes(x = Index0, y = Index4)) + geom_point() + geom_smooth(method = lm)

@@ -28,4 +28,4 @@ word_lengths = lib.get_word_lengths(doculects, True, False)
 geometries = lib.get_geometries(doculects)
 lib.write_geometries_and_indices(doculects, all_sonority_indices, word_lengths, geometries, 'sonorities.csv')
 
-lib.write_word_structures(lib.get_word_structures(doculects), 'word_structures.csv')
+lib.write_word_structures(lib.get_word_structures(doculects), 'word_structures.csv', 'word_lengths.csv')
