@@ -16,8 +16,8 @@ d_fam <- read.csv(file = "data_family.csv")
 d_gen <- read.csv(file = "data_genus.csv")
 d_all <- read.csv(file = "data.csv")
 
-d_mac$Macroarea <- sub("Am", "\nAm", d_mac$Macroarea)
-d_all$Macroarea <- sub("Am", "\nAm", d_all$Macroarea)
+d_mac$Macroarea <- sub("Am", " Am", d_mac$Macroarea)
+d_all$Macroarea <- sub("Am", " Am", d_all$Macroarea)
 d_mac_mean <- d_mac %>% filter(Method == "mean")
 d_mac_med <- d_mac %>% filter(Method == "median")
 d_fam_mean <- d_fam %>% filter(Method == "mean")
@@ -40,12 +40,14 @@ m_all <- lmer(Index0_trans ~ T_trans + (T_trans | Family), data = d_all)
 m_all_1 <- lmer(Index0_trans ~ T_trans + (1 | Family), data = d_all)
 anova(m_gen, m_gen_1)  # p < 0.001. Use m_gen
 anova(m_all, m_all_1)  # p < 0.001. Use m_all
+m_all_lm <- lm(Index0_trans ~ T_trans, data = d_all)
 
 summary(m_mac_mean)
 summary(m_mac_med)
 summary(m_fam)
 summary(m_gen)
 summary(m_all)
+summary(m_all_lm)
 
 
 # Plot distribution
@@ -54,6 +56,7 @@ summary(m_all)
 p01 <- ggplot(d_all, aes(x = Macroarea, y = T, color = Macroarea)) +
   geom_violin(scale = "width", width = 0.8) +
   geom_boxplot(width = 0.09, lwd = 0.4, outlier.shape = NA, coef = 0) +
+  scale_x_discrete(labels = sub(" ", "\n", levels(d_all$Macroarea))) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black"),
@@ -64,6 +67,7 @@ p01 <- ggplot(d_all, aes(x = Macroarea, y = T, color = Macroarea)) +
 p02 <- ggplot(d_all, aes(x = Macroarea, y = Index0, color = Macroarea)) +
   geom_violin(scale = "width", width = 0.75) +
   geom_boxplot(width = 0.09, lwd = 0.4, outlier.shape = NA, coef = 0) +
+  scale_x_discrete(labels = sub(" ", "\n", levels(d_all$Macroarea))) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black"),
@@ -80,7 +84,8 @@ e_mac_mean <- ggpredict(m_mac_mean, terms = "T")
 e_mac_med <- ggpredict(m_mac_med, terms = "T")
 e_fam <- ggpredict(m_fam, terms = "T_trans")
 e_gen <- ggpredict(m_gen, terms = "T_trans")
-e_all <- ggpredict(m_all, terms = "T_trans")
+e_all_lm <- ggpredict(m_all_lm, terms = "T_trans")
+e_all_lmer <- ggpredict(m_all, terms = "T_trans")
 
 p1_labels <- c("Mean (solid line)", "Median (dashed line)")
 p1 <- ggplot() +
@@ -95,14 +100,13 @@ p1 <- ggplot() +
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black"),
         legend.title = element_blank(),
-        legend.spacing.y = unit(-0.5, "cm"), legend.margin = margin(),
+        legend.spacing.y = unit(0, "cm"), legend.margin = margin(),
         plot.title = element_text(hjust = 0.5)) +
   coord_cartesian(ylim = c(9, 11)) +
   ggtitle("Macroareas") +
   xlab("MAT (°C)") + ylab("MSI")
 p2 <- ggplot() +
   geom_point(data = d_fam_mean, aes(T_trans, Index0_trans), color = "blue", alpha = 0.7) +
-  geom_ribbon(data = e_fam, aes(x, ymin = conf.low, ymax = conf.high), alpha = 0.35) +
   geom_line(data = e_fam, aes(x, predicted)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
@@ -112,8 +116,8 @@ p2 <- ggplot() +
   xlab("MAT (transformed)") + ylab("MSI (transformed)")
 p3 <- ggplot() +
   geom_point(data = d_all, aes(T_trans, Index0_trans), color = "blue", alpha = 0.08) +
-  geom_ribbon(data = e_all, aes(x, ymin = conf.low, ymax = conf.high), alpha = 0.35) +
-  geom_line(data = e_all, aes(x, predicted)) +
+  geom_line(data = e_all_lmer, aes(x, predicted), color = "darkorange4") +
+  geom_line(data = e_all_lm, aes(x, predicted)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black"),
