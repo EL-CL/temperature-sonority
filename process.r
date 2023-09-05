@@ -11,10 +11,10 @@ library(tibble)
 # Read csv files
 # ==============
 
-d_mac <- read.csv(file = "data_macroarea.csv")
-d_fam <- read.csv(file = "data_family.csv")
-d_gen <- read.csv(file = "data_genus.csv")
-d_all <- read.csv(file = "data.csv")
+d_mac <- read.csv(file = "data/data_macroarea.csv")
+d_fam <- read.csv(file = "data/data_family.csv")
+d_gen <- read.csv(file = "data/data_genus.csv")
+d_all <- read.csv(file = "data/data.csv")
 
 d_mac$Macroarea <- sub("Am", " Am", d_mac$Macroarea)
 d_all$Macroarea <- sub("Am", " Am", d_all$Macroarea)

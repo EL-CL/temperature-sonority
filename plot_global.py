@@ -7,6 +7,7 @@ import colorsys
 def read_global_temperature(filename):
     return np.genfromtxt(filename, delimiter=',', usemask=True)
 
+
 def read_sonorities(filename, temperatures_filename):
     with open(filename, 'r') as f:
         next(f)
@@ -16,7 +17,7 @@ def read_sonorities(filename, temperatures_filename):
         names = [line.strip().split(',')[0] for line in f if '--' not in line]
     data = [line for line in data if line[0] in names]
     # return [(lon, lat, sonority index)]
-    return [[float(line[i]) for line in data] for i in (1, 2, 6)]
+    return [[float(line[i]) for line in data] for i in (1, 2, 7)]
 
 
 def new_cmap(cm_object, saturation_factor, lightness_factor):
@@ -30,8 +31,8 @@ def new_cmap(cm_object, saturation_factor, lightness_factor):
     return my_cmap
 
 
-t = read_global_temperature('temperature_global.csv')
-sx, sy, sv = read_sonorities('sonorities.csv', 'temperatures.csv')
+t = read_global_temperature('data/temperature_global.csv')
+sx, sy, sv = read_sonorities('data/sonorities.csv', 'data/temperatures.csv')
 
 # plt.hist(t.flatten(), bins=30), plt.show()
 t = np.power(t - np.nanmin(t) + 0.1, 1.6)
@@ -53,6 +54,6 @@ ax_s.set_ylim(-60, 90)
 ax_t.axis('off')
 ax_s.axis('off')
 
-plt.savefig('global.png', bbox_inches='tight', pad_inches=0.3, dpi=150)
-# plt.savefig('global.pdf', bbox_inches='tight', pad_inches=0.3, dpi=150)
+plt.savefig('figures/global.png', bbox_inches='tight', pad_inches=0.3, dpi=150)
+# plt.savefig('figures/global.pdf', bbox_inches='tight', pad_inches=0.3, dpi=150)
 plt.show()

@@ -25,5 +25,5 @@ for i in range(41):
 
 temperatures.values /= 41
 s = time()
-lib.write_temperatures_by_points_global(temperatures, 'temperature_global.csv')
+lib.write_temperatures_by_points_global(temperatures, 'data/temperature_global.csv')
 print(f'Write done,', round(time() - s, 2), 's')
