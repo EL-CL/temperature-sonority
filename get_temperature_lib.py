@@ -1,4 +1,3 @@
-from time import time
 import numpy as np
 from netCDF4 import Dataset
 from pathlib import Path

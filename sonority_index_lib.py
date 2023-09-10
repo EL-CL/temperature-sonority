@@ -1,5 +1,6 @@
 import re
 from numpy import average
+from lingpy.sequence.sound_classes import asjp2tokens
 
 sonority_scales = [
     # 0: Parker's
@@ -45,6 +46,22 @@ phone2index_cache = {}
 phone2base_and_types_cache = {}
 word2phones_cache = {}
 
+asjp2tokens_patch = {
+    # Both combination orders are actually correct, but asjp2tokens() currently recognizes only one of them
+    '*$': '$*',
+    '*~': '~*',
+    '"$': '$"',
+    '"~': '~"',
+}
+
+suffix_tags = {
+    'w': 'labialized',
+    'y': 'palatalized',
+    'h': 'aspirated',  # including devoiced
+    'x': 'velarized',
+    'X': 'pharyngealized',
+}
+
 
 def set_index_maps(scale_no, index_for_click):
     monophone2index.clear()
@@ -84,13 +101,6 @@ def phone2base_and_types(phone):
         tags.append('nasalized')
     if '"' in phone:
         tags.append('glottalized')
-    suffix_tags = {
-        'w': 'labialized',
-        'y': 'palatalized',
-        'h': 'aspirated',  # including devoiced
-        'x': 'velarized',
-        'X': 'pharyngealized',
-    }
     base = phone.replace('*', '').replace('"', '')
     while len(base) > 1:
         if base[-1] in suffix_tags:
@@ -115,6 +125,24 @@ def phone2base_and_types(phone):
     return result
 
 
+def split_geminate_tokens(tokens):
+    i = 0
+    while i < len(tokens):
+        if tokens[i] == 'q""':  # Appears in Tsez 2; actually means [qʼˤ]
+            tokens[i] = 'q"'
+        token = tokens[i]
+        # e.g. 'uu' -> 'u|u'; 'tt' -> 't|t'; 'tth' -> 't|th'
+        if (len(token) == 2 or len(token) == 3) and token[0] == token[1]:
+            tokens = tokens[:i] + [token[:1], token[1:]] + tokens[i + 1:]
+            continue
+        # e.g. 'u*u*' -> 'u*|u*'; 't"t"' -> 't"|t"'
+        if len(token) == 4 and token[:2] == token[2:]:
+            tokens = tokens[:i] + [token[:2], token[2:]] + tokens[i + 1:]
+            continue
+        i += 1
+    return tokens
+
+
 def word2phones(word):
     if type(word) is not str:
         word = word.form
@@ -123,35 +151,11 @@ def word2phones(word):
     if word in word2phones_cache:
         return word2phones_cache[word]
 
-    # Fix invalid spellings
-    patches = {
-        '""': '"',
-        'a*g~': 'a*g',
-        'i*7~': 'i*7',
-        'a*d~': 'a*d',
-        'a*7~': 'a*7',
-        'i*dy$': 'i*dy~',
-        'eq"X$': 'eq"X~',
-    }
-    for k in patches:
-        if k in word:
-            word = word.replace(k, patches[k])
-    if word == '~E':
-        word = 'E'
-    if len(word) > 2 and word[1] == '~':
-        word = word[0] + word[2:]
-
-    word = '│' + re.sub('(.)', r'\1│', word)
-
-    unit = '([^│]*)│'
-    word = re.sub('│' + unit * 1 + '\*', r'│\1*', word)
-    word = re.sub('│' + unit * 1 + '"', r'│\1"', word)
-    word = re.sub('│' + unit * 2 + '~', r'│\1\2', word)
-    word = re.sub('│' + unit * 2 + '~', r'│\1\2', word)
-    word = re.sub('│' + unit * 3 + '\$', r'│\1\2\3', word)
-
-    word = word.strip('│')
-    phones = word.split('│')
+    for pair in asjp2tokens_patch.items():
+        word = word.replace(*pair)
+    phones = asjp2tokens(word, merge_vowels=False)
+    phones = [phone.replace('~', '').replace('$', '') for phone in phones]
+    phones = split_geminate_tokens(phones)
     word2phones_cache[word] = phones
     return phones
 
