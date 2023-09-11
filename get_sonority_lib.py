@@ -1,11 +1,17 @@
+import os.path
 from sonority_index_lib import *
-from matplotlib.patches import Rectangle
-import matplotlib.pyplot as plt
-import matplotlib.cm as cm
-from numpy import average, median
 from pyasjp.api import ASJP
-import geopandas
-from shapely.geometry import Point
+
+doculects_to_exclude = [
+    # Having no vowels
+    'Middle Egyptian',
+    'Christian Palestinian',
+    'Phoenician',
+    'Sabean',
+
+    # Having very few vowels
+    'Ugaritic',
+]
 
 
 def open_doculects(raw_dir):
@@ -41,7 +47,7 @@ def print_doculects_info(doculects):
     print()
 
 
-def filter_doculects(doculects, words_to_include=None):
+def filter_doculects(doculects, words_to_include=None, temperature_data=''):
     print_doculects_info(doculects)
     if words_to_include:
         for d in doculects:
@@ -49,22 +55,23 @@ def filter_doculects(doculects, words_to_include=None):
         print(f'After intersection with {len(words_to_include)}:')
         print_doculects_info(doculects)
     doculects = [d for d in doculects if
-                 'Oth' not in d.classification_wals and
-                 d.code_iso and  # proto languages
-                 not d.long_extinct and  # ancient languages
-                 d.name not in [
-                     # having no vowels
-                     'Middle Egyptian',
-                     'Christian Palestinian',
-                     'Phoenician',
-                     'Sabean',
-                     # having very few vowels
-                     'Ugaritic',
-                 ] and
+                 'Oth' not in d.classification_wals and  # Artificial/Creoles/Pidgins
+                 d.code_iso and  # Proto languages
+                 not d.long_extinct and  # Ancient languages
+                 d.name not in doculects_to_exclude and
                  len(d.synsets) >= 20 and
                  d.latitude is not None]
-    print(f'After filtering:')
+    print('After filtering:')
     print_doculects_info(doculects)
+
+    if os.path.exists(temperature_data):
+        with open(temperature_data, 'r') as f:
+            next(f)
+            lines = [line for line in f if '--' not in line]
+        names = [line.split(',')[0] for line in lines]
+        doculects = [d for d in doculects if d.name in names]
+        print('After removing doculects without temperature data:')
+        print_doculects_info(doculects)
     return doculects
 
 
@@ -72,22 +79,22 @@ def validate(doculects):
     for doculect in doculects:
         for synset in doculect.synsets:
             for word in synset.words:
-                for phone in word2phones(word):
-                    base = phone2base_and_types(phone)[0]
+                for phone in word2phones(word.form):
+                    base = phone2base_and_tags(phone)[0]
                     if len(phone) == 0 or \
                             len(base) == 0 or \
-                            [i for i in base if i not in monophone2type]:
+                            [i for i in base if i not in token2type]:
                         print(doculect.name, 'has invalid word:', word)
-        types = [i
-                 for synset in doculect.synsets
-                 for word in synset.words
-                 for phone in word2phones(word)
-                 for i in phone2base_and_types(phone)[1]]
-        types = list(set(types))
-        if 'vowel' not in types:
-            print(doculect.name, 'has no vowel! Types:', types)
-        if 'consonant' not in types:
-            print(doculect.name, 'has no consonant! Types:', types)
+        tags = [i
+                for synset in doculect.synsets
+                for word in synset.words
+                for phone in word2phones(word.form)
+                for i in phone2base_and_tags(phone)[1]]
+        tags = list(set(tags))
+        if 'vowel' not in tags:
+            print(doculect.name, 'has no vowel! Tags:', tags)
+        if 'consonant' not in tags:
+            print(doculect.name, 'has no consonant! Tags:', tags)
 
 
 def get_phone_counts(doculects):
@@ -95,7 +102,7 @@ def get_phone_counts(doculects):
     for doculect in doculects:
         for synset in doculect.synsets:
             for word in synset.words:
-                for phone in word2phones(word):
+                for phone in word2phones(word.form):
                     result[phone] = result.get(phone, 0) + 1
     print('Total types of phones:', len(result.keys()))
     print('Counts of all phones:', sum(result.values()))
@@ -104,13 +111,13 @@ def get_phone_counts(doculects):
 
 
 def get_word_structures(doculects):
-    set_index_maps(0, 1)  # Use C-V map
+    set_token2index(0, 1)  # Use C-V map
     result = {}
     for doculect in doculects:
         for synset in doculect.synsets:
             for word in synset.words:
                 word = ''.join(['V' if phone2index(i) > 6 else 'C'
-                                for i in word2phones(word)])
+                                for i in word2phones(word.form)])
                 result[word] = result.get(word, 0) + 1
     print('Total types of word structures:', len(result))
     print('Counts of all words:', sum(result.values()))
@@ -158,15 +165,29 @@ def write_word_structures(structures, word_structures_filename, word_lengths_fil
         f.writelines([','.join(line) + '\n' for line in result])
 
 
+def doculect2index(doculect, average_by_meaning, with_loan, is_word_length=False):
+    def word2value(word):
+        return len(word2phones(word)) if is_word_length else word2index(word)
+    if average_by_meaning:
+        indices = []
+        for synset in doculect.synsets:
+            synset_indices = [word2value(word.form) for word in synset.words
+                              if with_loan or not word.loan]
+            if synset_indices:
+                indices.append(average(synset_indices))
+    else:
+        indices = [word2value(word.form) for synset in doculect.synsets
+                   for word in synset.words if with_loan or not word.loan]
+    return average(indices)
+
+
 def get_sonority_indices(doculects, average_by_meaning, with_loan, scale_no, index_for_click):
-    word2index_cache = {}
-    set_index_maps(scale_no, index_for_click)
-    return [doculect2index(d, average_by_meaning, with_loan, word2index_cache) for d in doculects]
+    set_token2index(scale_no, index_for_click)
+    return [doculect2index(d, average_by_meaning, with_loan) for d in doculects]
 
 
 def get_word_lengths(doculects, average_by_meaning, with_loan):
-    word2index_cache = {}
-    return [doculect2index(d, average_by_meaning, with_loan, word2index_cache, True) for d in doculects]
+    return [doculect2index(d, average_by_meaning, with_loan, True) for d in doculects]
 
 
 def get_all_sonority_indices(doculects, average_by_meaning, with_loan, indices_for_click):
@@ -179,7 +200,7 @@ def get_all_sonority_indices(doculects, average_by_meaning, with_loan, indices_f
 
 
 def get_geometries(doculects):
-    return [Point((d.longitude, d.latitude)) for d in doculects]
+    return [(d.longitude, d.latitude) for d in doculects]
 
 
 def write_geometries_and_indices(doculects, all_sonority_indices, word_lengths, geometries, csv_filename):
@@ -188,8 +209,8 @@ def write_geometries_and_indices(doculects, all_sonority_indices, word_lengths, 
     result += [
         [
             doculects[i].name,
-            str(geometries[i].x),
-            str(geometries[i].y),
+            str(geometries[i][0]),
+            str(geometries[i][1]),
             doculects[i].classification_wals,
             str(len(doculects[i].synsets)),
             str(sum([len(synset.words) for synset in doculects[i].synsets])),
@@ -200,78 +221,3 @@ def write_geometries_and_indices(doculects, all_sonority_indices, word_lengths, 
         for i, _ in enumerate(doculects)]
     with open(csv_filename, 'w') as f:
         f.writelines([','.join(line) + '\n' for line in result])
-
-
-def plot(geometry, indices, sects_count, save_to='', save_only=False):
-    world_path = geopandas.datasets.get_path('naturalearth_lowres')
-    world = geopandas.read_file(world_path)
-    ax = world.boundary.plot(linewidth=0.3)
-
-    index_min = min(indices)
-    index_max = max(indices)
-    print('index_min =', index_min)
-    print('index_max =', index_max)
-    print('index_avr =', average(indices))
-    print('index_med =', median(indices))
-
-    indices_sorted = sorted(indices)
-    plot_min = int(index_min)
-    plot_max = int(index_max) + 1
-    step = 0.5
-
-    stops = int((plot_max - plot_min) / step + 1)
-    geometry_added = [Point(((i - stops / 2) * 5, -50)) for i in range(stops)]
-    indices_added = [i * step + plot_min for i in range(stops)]
-
-    sects_in = []
-    sects_out = []
-    for i in range(sects_count + 1):
-        k = i / sects_count
-        sects_in.append(indices_sorted[int((len(indices_sorted) - 1) * k)])
-        sects_out.append(k)
-
-    def mapp(index):
-        if index < sects_in[0]:
-            return 0
-        if index >= sects_in[-1]:
-            return 1
-        for i in range(len(sects_in) - 1):
-            start = sects_out[i]
-            width = sects_out[i + 1] - sects_out[i]
-            if index < sects_in[i + 1]:
-                return (index - sects_in[i]) / (sects_in[i + 1] - sects_in[i]) * width + start
-
-    gdf = geopandas.GeoDataFrame(geometry=geometry + geometry_added)
-    gdf.plot(ax=ax,
-             color=cm.cool([mapp(i) for i in indices + indices_added]),
-             markersize=0.8,
-             legend=True)
-    for i in range(stops):
-        if i % 2:
-            continue
-        plt.text(
-            geometry_added[i].x - 1.5,
-            geometry_added[i].y - 5,
-            int(indices_added[i]),
-        )
-    plt.xlim([-179.8, 179.8])
-    plt.ylim([-89.8, 89.8])
-    plt.rcParams["figure.figsize"] = (19.2, 10)
-    plt.rcParams['font.serif'] = ['SimHei']
-    plt.text(geometry_added[0].x - 18, geometry_added[0].y - 2,
-             '平均响度', fontdict={'family': 'serif'})
-
-    rect = Rectangle((geometry_added[0].x - 20, geometry_added[0].y - 7.5),
-                     geometry_added[-1].x - geometry_added[0].x + 24,
-                     12, linewidth=0.5, edgecolor='black', facecolor='none')
-
-    # Add the patch to the Axes
-    ax.add_patch(rect)
-    ax.set_axis_off()
-
-    if save_to:
-        plt.savefig(save_to, bbox_inches='tight',
-                    pad_inches=0.3, dpi=150)
-    if not save_only:
-        plt.show()
-    return plt

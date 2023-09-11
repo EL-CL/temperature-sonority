@@ -1,258 +1,243 @@
 phone,base,count,tags
-n,n,122362,consonant; len-1
-m,m,89682,consonant; len-1
-k,k,87844,consonant; len-1
-t,t,79607,consonant; len-1
-l,l,67954,consonant; len-1
-r,r,66915,consonant; len-1
-s,s,51638,consonant; len-1
-b,b,49370,consonant; len-1
-d,d,39958,consonant; len-1
-p,p,38512,consonant; len-1
-g,g,36210,consonant; len-1
-N,N,34352,consonant; len-1
-h,h,30202,consonant; len-1
-7,7,21559,consonant; len-1
-S,S,13858,consonant; len-1
-f,f,13448,consonant; len-1
-C,C,13207,consonant; len-1
-x,x,11858,consonant; len-1
-5,5,10603,consonant; len-1
-v,v,9885,consonant; len-1
-c,c,9008,consonant; len-1
-j,j,8861,consonant; len-1
-z,z,8722,consonant; len-1
-q,q,5667,consonant; len-1
-L,L,4941,consonant; len-1
-X,X,3709,consonant; len-1
-T,T,3626,consonant; len-1
-8,8,2281,consonant; len-1
-Z,Z,2185,consonant; len-1
-!,!,705,consonant; len-1
-G,G,245,consonant; len-1
-4,4,217,consonant; len-1
-kh,k,2655,consonant; len-1; aspirated
-th,t,2409,consonant; len-1; aspirated
-ph,p,1195,consonant; len-1; aspirated
-Ch,C,570,consonant; len-1; aspirated
-ch,c,502,consonant; len-1; aspirated
-dh,d,229,consonant; len-1; aspirated
-Th,T,195,consonant; len-1; aspirated
-qh,q,153,consonant; len-1; aspirated
-gh,g,147,consonant; len-1; aspirated
-bh,b,131,consonant; len-1; aspirated
-sh,s,118,consonant; len-1; aspirated
-nh,n,108,consonant; len-1; aspirated
-mh,m,62,consonant; len-1; aspirated
-lh,l,50,consonant; len-1; aspirated
-rh,r,49,consonant; len-1; aspirated
-Sh,S,31,consonant; len-1; aspirated
-Nh,N,26,consonant; len-1; aspirated
-!h,!,23,consonant; len-1; aspirated
-xh,x,17,consonant; len-1; aspirated
-zh,z,17,consonant; len-1; aspirated
-fh,f,13,consonant; len-1; aspirated
-8h,8,11,consonant; len-1; aspirated
-jh,j,10,consonant; len-1; aspirated
-Zh,Z,9,consonant; len-1; aspirated
-vh,v,9,consonant; len-1; aspirated
-5h,5,3,consonant; len-1; aspirated
-7h,7,3,consonant; len-1; aspirated
-Lh,L,3,consonant; len-1; aspirated
-4h,4,1,consonant; len-1; aspirated
-S"h,S,1,consonant; len-1; aspirated; glottalized
-t"h,t,1,consonant; len-1; aspirated; glottalized
-khw,k,84,consonant; len-1; aspirated; labialized
-thw,t,10,consonant; len-1; aspirated; labialized
-qhw,q,9,consonant; len-1; aspirated; labialized
-nhw,n,4,consonant; len-1; aspirated; labialized
-!hw,!,2,consonant; len-1; aspirated; labialized
-bhw,b,2,consonant; len-1; aspirated; labialized
-Chw,C,1,consonant; len-1; aspirated; labialized
-Nhw,N,1,consonant; len-1; aspirated; labialized
-chw,c,1,consonant; len-1; aspirated; labialized
-phw,p,1,consonant; len-1; aspirated; labialized
-vhw,v,1,consonant; len-1; aspirated; labialized
-thw*,t,1,consonant; len-1; aspirated; labialized; nasalized
-khy,k,38,consonant; len-1; aspirated; palatalized
-phy,p,25,consonant; len-1; aspirated; palatalized
-thy,t,13,consonant; len-1; aspirated; palatalized
-Chy,C,3,consonant; len-1; aspirated; palatalized
-chy,c,3,consonant; len-1; aspirated; palatalized
-mhy,m,2,consonant; len-1; aspirated; palatalized
-7hy,7,1,consonant; len-1; aspirated; palatalized
-Thy,T,1,consonant; len-1; aspirated; palatalized
-bhy,b,1,consonant; len-1; aspirated; palatalized
-jhy,j,1,consonant; len-1; aspirated; palatalized
-nhy,n,1,consonant; len-1; aspirated; palatalized
-khx,k,2,consonant; len-1; aspirated; velarized
-chx,c,1,consonant; len-1; aspirated; velarized
-phx,p,1,consonant; len-1; aspirated; velarized
-k",k,2425,consonant; len-1; glottalized
-b",b,2064,consonant; len-1; glottalized
-c",c,1262,consonant; len-1; glottalized
-d",d,1024,consonant; len-1; glottalized
-C",C,984,consonant; len-1; glottalized
-t",t,983,consonant; len-1; glottalized
-q",q,887,consonant; len-1; glottalized
-p",p,359,consonant; len-1; glottalized
-L",L,230,consonant; len-1; glottalized
-n",n,153,consonant; len-1; glottalized
-s",s,145,consonant; len-1; glottalized
-m",m,126,consonant; len-1; glottalized
-l",l,102,consonant; len-1; glottalized
-T",T,85,consonant; len-1; glottalized
-g",g,43,consonant; len-1; glottalized
-!",!,42,consonant; len-1; glottalized
-8",8,37,consonant; len-1; glottalized
-S",S,15,consonant; len-1; glottalized
+n,n,85362,consonant; len-1
+m,m,62330,consonant; len-1
+k,k,60018,consonant; len-1
+t,t,56464,consonant; len-1
+l,l,46783,consonant; len-1
+r,r,46471,consonant; len-1
+s,s,35068,consonant; len-1
+b,b,33264,consonant; len-1
+d,d,26920,consonant; len-1
+N,N,26110,consonant; len-1
+p,p,25686,consonant; len-1
+g,g,23591,consonant; len-1
+h,h,21714,consonant; len-1
+7,7,15205,consonant; len-1
+S,S,10098,consonant; len-1
+C,C,8781,consonant; len-1
+f,f,8453,consonant; len-1
+x,x,7976,consonant; len-1
+5,5,7798,consonant; len-1
+v,v,6761,consonant; len-1
+c,c,6646,consonant; len-1
+z,z,6333,consonant; len-1
+j,j,6041,consonant; len-1
+q,q,3586,consonant; len-1
+L,L,3192,consonant; len-1
+T,T,3124,consonant; len-1
+X,X,2580,consonant; len-1
+8,8,1679,consonant; len-1
+Z,Z,1623,consonant; len-1
+!,!,618,consonant; len-1
+4,4,200,consonant; len-1
+G,G,187,consonant; len-1
+kh,k,2149,consonant; len-1; aspirated/devoiced
+th,t,1914,consonant; len-1; aspirated/devoiced
+ph,p,912,consonant; len-1; aspirated/devoiced
+Ch,C,478,consonant; len-1; aspirated/devoiced
+ch,c,421,consonant; len-1; aspirated/devoiced
+dh,d,193,consonant; len-1; aspirated/devoiced
+Th,T,187,consonant; len-1; aspirated/devoiced
+gh,g,116,consonant; len-1; aspirated/devoiced
+qh,q,111,consonant; len-1; aspirated/devoiced
+sh,s,102,consonant; len-1; aspirated/devoiced
+bh,b,98,consonant; len-1; aspirated/devoiced
+nh,n,96,consonant; len-1; aspirated/devoiced
+mh,m,54,consonant; len-1; aspirated/devoiced
+lh,l,44,consonant; len-1; aspirated/devoiced
+rh,r,43,consonant; len-1; aspirated/devoiced
+Sh,S,31,consonant; len-1; aspirated/devoiced
+Nh,N,22,consonant; len-1; aspirated/devoiced
+!h,!,18,consonant; len-1; aspirated/devoiced
+zh,z,15,consonant; len-1; aspirated/devoiced
+xh,x,13,consonant; len-1; aspirated/devoiced
+fh,f,12,consonant; len-1; aspirated/devoiced
+8h,8,11,consonant; len-1; aspirated/devoiced
+Zh,Z,8,consonant; len-1; aspirated/devoiced
+vh,v,7,consonant; len-1; aspirated/devoiced
+jh,j,6,consonant; len-1; aspirated/devoiced
+5h,5,2,consonant; len-1; aspirated/devoiced
+7h,7,2,consonant; len-1; aspirated/devoiced
+Lh,L,2,consonant; len-1; aspirated/devoiced
+S"h,S,1,consonant; len-1; aspirated/devoiced; glottalized
+t"h,t,1,consonant; len-1; aspirated/devoiced; glottalized
+k",k,1500,consonant; len-1; glottalized
+b",b,1281,consonant; len-1; glottalized
+c",c,907,consonant; len-1; glottalized
+t",t,641,consonant; len-1; glottalized
+C",C,640,consonant; len-1; glottalized
+q",q,573,consonant; len-1; glottalized
+d",d,473,consonant; len-1; glottalized
+p",p,189,consonant; len-1; glottalized
+L",L,119,consonant; len-1; glottalized
+n",n,97,consonant; len-1; glottalized
+s",s,89,consonant; len-1; glottalized
+m",m,65,consonant; len-1; glottalized
+T",T,53,consonant; len-1; glottalized
+l",l,38,consonant; len-1; glottalized
+!",!,28,consonant; len-1; glottalized
+8",8,28,consonant; len-1; glottalized
+g",g,18,consonant; len-1; glottalized
 h",h,15,consonant; len-1; glottalized
-N",N,14,consonant; len-1; glottalized
-x",x,12,consonant; len-1; glottalized
-X",X,11,consonant; len-1; glottalized
-r",r,8,consonant; len-1; glottalized
+S",S,12,consonant; len-1; glottalized
+N",N,10,consonant; len-1; glottalized
 j",j,7,consonant; len-1; glottalized
+x",x,7,consonant; len-1; glottalized
 5",5,6,consonant; len-1; glottalized
+X",X,6,consonant; len-1; glottalized
+r",r,5,consonant; len-1; glottalized
 z",z,4,consonant; len-1; glottalized
-7",7,2,consonant; len-1; glottalized
-f",f,2,consonant; len-1; glottalized
-kw,k,2467,consonant; len-1; labialized
-gw,g,964,consonant; len-1; labialized
-bw,b,558,consonant; len-1; labialized
-mw,m,509,consonant; len-1; labialized
-xw,x,506,consonant; len-1; labialized
-tw,t,409,consonant; len-1; labialized
-qw,q,312,consonant; len-1; labialized
-pw,p,287,consonant; len-1; labialized
-Nw,N,281,consonant; len-1; labialized
-nw,n,279,consonant; len-1; labialized
-sw,s,245,consonant; len-1; labialized
-fw,f,227,consonant; len-1; labialized
-hw,h,191,consonant; len-1; labialized
-Xw,X,133,consonant; len-1; labialized
-dw,d,123,consonant; len-1; labialized
-Cw,C,98,consonant; len-1; labialized
-5w,5,92,consonant; len-1; labialized
-lw,l,90,consonant; len-1; labialized
-vw,v,87,consonant; len-1; labialized
-rw,r,66,consonant; len-1; labialized
-Sw,S,65,consonant; len-1; labialized
-cw,c,40,consonant; len-1; labialized
-jw,j,37,consonant; len-1; labialized
-zw,z,37,consonant; len-1; labialized
-7w,7,33,consonant; len-1; labialized
+7",7,1,consonant; len-1; glottalized
+f",f,1,consonant; len-1; glottalized
+kw,k,1639,consonant; len-1; labialized
+gw,g,629,consonant; len-1; labialized
+bw,b,438,consonant; len-1; labialized
+mw,m,406,consonant; len-1; labialized
+xw,x,284,consonant; len-1; labialized
+tw,t,273,consonant; len-1; labialized
+Nw,N,230,consonant; len-1; labialized
+nw,n,228,consonant; len-1; labialized
+pw,p,203,consonant; len-1; labialized
+fw,f,190,consonant; len-1; labialized
+sw,s,187,consonant; len-1; labialized
+qw,q,170,consonant; len-1; labialized
+hw,h,147,consonant; len-1; labialized
+dw,d,102,consonant; len-1; labialized
+5w,5,83,consonant; len-1; labialized
+Xw,X,79,consonant; len-1; labialized
+Cw,C,66,consonant; len-1; labialized
+lw,l,66,consonant; len-1; labialized
+vw,v,65,consonant; len-1; labialized
+Sw,S,52,consonant; len-1; labialized
+rw,r,48,consonant; len-1; labialized
+cw,c,32,consonant; len-1; labialized
+jw,j,31,consonant; len-1; labialized
+zw,z,27,consonant; len-1; labialized
+7w,7,26,consonant; len-1; labialized
 Tw,T,17,consonant; len-1; labialized
 Zw,Z,12,consonant; len-1; labialized
 !w,!,8,consonant; len-1; labialized
 8w,8,4,consonant; len-1; labialized
 Gw,G,2,consonant; len-1; labialized
-Lw,L,2,consonant; len-1; labialized
-kwh,k,8,consonant; len-1; labialized; aspirated
-zwh,z,3,consonant; len-1; labialized; aspirated
-swh,s,2,consonant; len-1; labialized; aspirated
-Gwh,G,1,consonant; len-1; labialized; aspirated
-gwh,g,1,consonant; len-1; labialized; aspirated
-mwh,m,1,consonant; len-1; labialized; aspirated
-k"w,k,192,consonant; len-1; labialized; glottalized
-q"w,q,149,consonant; len-1; labialized; glottalized
-c"w,c,13,consonant; len-1; labialized; glottalized
-b"w,b,7,consonant; len-1; labialized; glottalized
-C"w,C,4,consonant; len-1; labialized; glottalized
+Lw,L,1,consonant; len-1; labialized
+khw,k,81,consonant; len-1; labialized; aspirated/devoiced
+thw,t,10,consonant; len-1; labialized; aspirated/devoiced
+qhw,q,9,consonant; len-1; labialized; aspirated/devoiced
+kwh,k,5,consonant; len-1; labialized; aspirated/devoiced
+nhw,n,4,consonant; len-1; labialized; aspirated/devoiced
+!hw,!,2,consonant; len-1; labialized; aspirated/devoiced
+bhw,b,2,consonant; len-1; labialized; aspirated/devoiced
+swh,s,2,consonant; len-1; labialized; aspirated/devoiced
+Chw,C,1,consonant; len-1; labialized; aspirated/devoiced
+Gwh,G,1,consonant; len-1; labialized; aspirated/devoiced
+Nhw,N,1,consonant; len-1; labialized; aspirated/devoiced
+chw,c,1,consonant; len-1; labialized; aspirated/devoiced
+mwh,m,1,consonant; len-1; labialized; aspirated/devoiced
+phw,p,1,consonant; len-1; labialized; aspirated/devoiced
+vhw,v,1,consonant; len-1; labialized; aspirated/devoiced
+zwh,z,1,consonant; len-1; labialized; aspirated/devoiced
+thw*,t,1,consonant; len-1; labialized; aspirated/devoiced; nasalized
+k"w,k,82,consonant; len-1; labialized; glottalized
+q"w,q,73,consonant; len-1; labialized; glottalized
+c"w,c,12,consonant; len-1; labialized; glottalized
+b"w,b,4,consonant; len-1; labialized; glottalized
 t"w,t,4,consonant; len-1; labialized; glottalized
-kw",k,3,consonant; len-1; labialized; glottalized
+C"w,C,3,consonant; len-1; labialized; glottalized
 !"w,!,2,consonant; len-1; labialized; glottalized
-Sw",S,2,consonant; len-1; labialized; glottalized
-qw",q,2,consonant; len-1; labialized; glottalized
-7"w,7,1,consonant; len-1; labialized; glottalized
 S"w,S,1,consonant; len-1; labialized; glottalized
-X"w,X,1,consonant; len-1; labialized; glottalized
-d"w,d,1,consonant; len-1; labialized; glottalized
+Sw",S,1,consonant; len-1; labialized; glottalized
 g"w,g,1,consonant; len-1; labialized; glottalized
 h"w,h,1,consonant; len-1; labialized; glottalized
+kw",k,1,consonant; len-1; labialized; glottalized
+qw",q,1,consonant; len-1; labialized; glottalized
 tw",t,1,consonant; len-1; labialized; glottalized
 x"w,x,1,consonant; len-1; labialized; glottalized
 xw",x,1,consonant; len-1; labialized; glottalized
 Nw*,N,1,consonant; len-1; labialized; nasalized
 hw*,h,1,consonant; len-1; labialized; nasalized
-kwy,k,20,consonant; len-1; labialized; palatalized
-hwy,h,5,consonant; len-1; labialized; palatalized
+hwy,h,4,consonant; len-1; labialized; palatalized
+kwy,k,1,consonant; len-1; labialized; palatalized
 zwy,z,1,consonant; len-1; labialized; palatalized
-Cw"y,C,1,consonant; len-1; labialized; palatalized; glottalized
 XwX,X,3,consonant; len-1; labialized; pharyngealized
 qwX,q,1,consonant; len-1; labialized; pharyngealized
+qXw,q,1,consonant; len-1; labialized; pharyngealized
 q"wX,q,2,consonant; len-1; labialized; pharyngealized; glottalized
-qw"X,q,1,consonant; len-1; labialized; pharyngealized; glottalized
-l*,l,18,consonant; len-1; nasalized
-r*,r,6,consonant; len-1; nasalized
-h*,h,1,consonant; len-1; nasalized
-ty,t,896,consonant; len-1; palatalized
-dy,d,691,consonant; len-1; palatalized
-ky,k,678,consonant; len-1; palatalized
-ly,l,518,consonant; len-1; palatalized
-ny,n,483,consonant; len-1; palatalized
-sy,s,382,consonant; len-1; palatalized
-py,p,315,consonant; len-1; palatalized
-my,m,288,consonant; len-1; palatalized
-gy,g,270,consonant; len-1; palatalized
-ry,r,214,consonant; len-1; palatalized
-by,b,173,consonant; len-1; palatalized
-hy,h,152,consonant; len-1; palatalized
-Sy,S,108,consonant; len-1; palatalized
-Cy,C,88,consonant; len-1; palatalized
-cy,c,88,consonant; len-1; palatalized
-zy,z,86,consonant; len-1; palatalized
-vy,v,81,consonant; len-1; palatalized
-fy,f,56,consonant; len-1; palatalized
-xy,x,56,consonant; len-1; palatalized
-7y,7,38,consonant; len-1; palatalized
-Ny,N,33,consonant; len-1; palatalized
-5y,5,19,consonant; len-1; palatalized
-qy,q,16,consonant; len-1; palatalized
-jy,j,15,consonant; len-1; palatalized
-Ly,L,14,consonant; len-1; palatalized
-Zy,Z,13,consonant; len-1; palatalized
-8y,8,11,consonant; len-1; palatalized
-Ty,T,11,consonant; len-1; palatalized
-Xy,X,10,consonant; len-1; palatalized
+Nxw,N,3,consonant; len-1; labialized; velarized
+kxw,k,2,consonant; len-1; labialized; velarized
+!xw,!,1,consonant; len-1; labialized; velarized
+bxw,b,1,consonant; len-1; labialized; velarized
+qxw,q,1,consonant; len-1; labialized; velarized
+l*,l,6,consonant; len-1; nasalized
+ty,t,690,consonant; len-1; palatalized
+dy,d,544,consonant; len-1; palatalized
+ky,k,463,consonant; len-1; palatalized
+ny,n,395,consonant; len-1; palatalized
+ly,l,320,consonant; len-1; palatalized
+sy,s,261,consonant; len-1; palatalized
+my,m,231,consonant; len-1; palatalized
+py,p,215,consonant; len-1; palatalized
+gy,g,207,consonant; len-1; palatalized
+by,b,124,consonant; len-1; palatalized
+ry,r,120,consonant; len-1; palatalized
+hy,h,108,consonant; len-1; palatalized
+Cy,C,73,consonant; len-1; palatalized
+Sy,S,56,consonant; len-1; palatalized
+cy,c,54,consonant; len-1; palatalized
+xy,x,46,consonant; len-1; palatalized
+vy,v,40,consonant; len-1; palatalized
+zy,z,40,consonant; len-1; palatalized
+fy,f,38,consonant; len-1; palatalized
+7y,7,37,consonant; len-1; palatalized
+Ny,N,31,consonant; len-1; palatalized
+Ly,L,13,consonant; len-1; palatalized
+jy,j,12,consonant; len-1; palatalized
+qy,q,11,consonant; len-1; palatalized
+Ty,T,10,consonant; len-1; palatalized
+5y,5,9,consonant; len-1; palatalized
+8y,8,9,consonant; len-1; palatalized
+Zy,Z,9,consonant; len-1; palatalized
+Xy,X,8,consonant; len-1; palatalized
 4y,4,1,consonant; len-1; palatalized
-cyh,c,17,consonant; len-1; palatalized; aspirated
-syh,s,5,consonant; len-1; palatalized; aspirated
-tyh,t,4,consonant; len-1; palatalized; aspirated
-kyh,k,3,consonant; len-1; palatalized; aspirated
-dyh,d,1,consonant; len-1; palatalized; aspirated
-k"y,k,41,consonant; len-1; palatalized; glottalized
-C"y,C,8,consonant; len-1; palatalized; glottalized
-d"y,d,7,consonant; len-1; palatalized; glottalized
-b"y,b,6,consonant; len-1; palatalized; glottalized
+khy,k,36,consonant; len-1; palatalized; aspirated/devoiced
+phy,p,25,consonant; len-1; palatalized; aspirated/devoiced
+cyh,c,17,consonant; len-1; palatalized; aspirated/devoiced
+thy,t,9,consonant; len-1; palatalized; aspirated/devoiced
+syh,s,5,consonant; len-1; palatalized; aspirated/devoiced
+Chy,C,3,consonant; len-1; palatalized; aspirated/devoiced
+kyh,k,3,consonant; len-1; palatalized; aspirated/devoiced
+chy,c,2,consonant; len-1; palatalized; aspirated/devoiced
+mhy,m,2,consonant; len-1; palatalized; aspirated/devoiced
+7hy,7,1,consonant; len-1; palatalized; aspirated/devoiced
+Thy,T,1,consonant; len-1; palatalized; aspirated/devoiced
+bhy,b,1,consonant; len-1; palatalized; aspirated/devoiced
+dyh,d,1,consonant; len-1; palatalized; aspirated/devoiced
+nhy,n,1,consonant; len-1; palatalized; aspirated/devoiced
+tyh,t,1,consonant; len-1; palatalized; aspirated/devoiced
+k"y,k,33,consonant; len-1; palatalized; glottalized
+C"y,C,7,consonant; len-1; palatalized; glottalized
+d"y,d,6,consonant; len-1; palatalized; glottalized
 t"y,t,3,consonant; len-1; palatalized; glottalized
 T"y,T,2,consonant; len-1; palatalized; glottalized
-s"y,s,2,consonant; len-1; palatalized; glottalized
-c"y,c,1,consonant; len-1; palatalized; glottalized
+b"y,b,1,consonant; len-1; palatalized; glottalized
 ky",k,1,consonant; len-1; palatalized; glottalized
-p"y,p,1,consonant; len-1; palatalized; glottalized
-ty",t,1,consonant; len-1; palatalized; glottalized
-vy",v,1,consonant; len-1; palatalized; glottalized
-kyw,k,3,consonant; len-1; palatalized; labialized
+kyw,k,2,consonant; len-1; palatalized; labialized
 Tyw,T,1,consonant; len-1; palatalized; labialized
 Zyw,Z,1,consonant; len-1; palatalized; labialized
 syw,s,1,consonant; len-1; palatalized; labialized
 tyw,t,1,consonant; len-1; palatalized; labialized
-lyX,l,1,consonant; len-1; palatalized; pharyngealized
-qX,q,47,consonant; len-1; pharyngealized
-tX,t,45,consonant; len-1; pharyngealized
+qX,q,38,consonant; len-1; pharyngealized
 rX,r,38,consonant; len-1; pharyngealized
-sX,s,29,consonant; len-1; pharyngealized
-dX,d,18,consonant; len-1; pharyngealized
-lX,l,18,consonant; len-1; pharyngealized
-mX,m,14,consonant; len-1; pharyngealized
-XX,X,11,consonant; len-1; pharyngealized
+tX,t,33,consonant; len-1; pharyngealized
+dX,d,17,consonant; len-1; pharyngealized
+lX,l,13,consonant; len-1; pharyngealized
+sX,s,13,consonant; len-1; pharyngealized
+mX,m,11,consonant; len-1; pharyngealized
 bX,b,10,consonant; len-1; pharyngealized
 nX,n,8,consonant; len-1; pharyngealized
-zX,z,8,consonant; len-1; pharyngealized
-8X,8,6,consonant; len-1; pharyngealized
-kX,k,5,consonant; len-1; pharyngealized
-LX,L,3,consonant; len-1; pharyngealized
+zX,z,6,consonant; len-1; pharyngealized
+8X,8,3,consonant; len-1; pharyngealized
 ZX,Z,3,consonant; len-1; pharyngealized
+kX,k,3,consonant; len-1; pharyngealized
 pX,p,3,consonant; len-1; pharyngealized
 !X,!,2,consonant; len-1; pharyngealized
 qXX,q,2,consonant; len-1; pharyngealized
@@ -260,31 +245,28 @@ qXX,q,2,consonant; len-1; pharyngealized
 CX,C,1,consonant; len-1; pharyngealized
 GX,G,1,consonant; len-1; pharyngealized
 NX,N,1,consonant; len-1; pharyngealized
-SX,S,1,consonant; len-1; pharyngealized
 TX,T,1,consonant; len-1; pharyngealized
 cX,c,1,consonant; len-1; pharyngealized
 hX,h,1,consonant; len-1; pharyngealized
 jX,j,1,consonant; len-1; pharyngealized
-q"X,q,9,consonant; len-1; pharyngealized; glottalized
-t"X,t,4,consonant; len-1; pharyngealized; glottalized
+q"X,q,8,consonant; len-1; pharyngealized; glottalized
+t"X,t,3,consonant; len-1; pharyngealized; glottalized
 c"X,c,1,consonant; len-1; pharyngealized; glottalized
 p"X,p,1,consonant; len-1; pharyngealized; glottalized
 qX",q,1,consonant; len-1; pharyngealized; glottalized
-XXw,X,1,consonant; len-1; pharyngealized; labialized
-qXw,q,1,consonant; len-1; pharyngealized; labialized
-rx,r,32,consonant; len-1; velarized
 nx,n,31,consonant; len-1; velarized
-kx,k,26,consonant; len-1; velarized
-tx,t,21,consonant; len-1; velarized
-sx,s,19,consonant; len-1; velarized
+rx,r,30,consonant; len-1; velarized
+tx,t,20,consonant; len-1; velarized
+kx,k,19,consonant; len-1; velarized
+sx,s,17,consonant; len-1; velarized
 Nx,N,13,consonant; len-1; velarized
 !x,!,12,consonant; len-1; velarized
 cx,c,12,consonant; len-1; velarized
 lx,l,9,consonant; len-1; velarized
 Cx,C,8,consonant; len-1; velarized
-Sx,S,8,consonant; len-1; velarized
 mx,m,7,consonant; len-1; velarized
-px,p,7,consonant; len-1; velarized
+Sx,S,6,consonant; len-1; velarized
+px,p,6,consonant; len-1; velarized
 bx,b,5,consonant; len-1; velarized
 dx,d,5,consonant; len-1; velarized
 hx,h,4,consonant; len-1; velarized
@@ -292,114 +274,100 @@ gx,g,3,consonant; len-1; velarized
 7x,7,2,consonant; len-1; velarized
 qx,q,1,consonant; len-1; velarized
 vx,v,1,consonant; len-1; velarized
-kx",k,7,consonant; len-1; velarized; glottalized
-Nxw,N,3,consonant; len-1; velarized; labialized
-kxw,k,2,consonant; len-1; velarized; labialized
-!xw,!,1,consonant; len-1; velarized; labialized
-bxw,b,1,consonant; len-1; velarized; labialized
-qxw,q,1,consonant; len-1; velarized; labialized
-kp,kp,578,consonant; len-2
-gb,gb,356,consonant; len-2
-tr,tr,103,consonant; len-2
-tL,tL,88,consonant; len-2
+khx,k,2,consonant; len-1; velarized; aspirated/devoiced
+chx,c,1,consonant; len-1; velarized; aspirated/devoiced
+phx,p,1,consonant; len-1; velarized; aspirated/devoiced
+kx",k,1,consonant; len-1; velarized; glottalized
+kp,kp,539,consonant; len-2
+gb,gb,325,consonant; len-2
+tr,tr,84,consonant; len-2
+tL,tL,72,consonant; len-2
 rn,rn,42,consonant; len-2
-dr,dr,41,consonant; len-2
-tl,tl,41,consonant; len-2
-hn,hn,35,consonant; len-2
-tS,tS,35,consonant; len-2
+dr,dr,39,consonant; len-2
 bv,bv,34,consonant; len-2
-l7,l7,34,consonant; len-2
+tl,tl,34,consonant; len-2
 pf,pf,33,consonant; len-2
 cz,cz,32,consonant; len-2
-dL,dL,32,consonant; len-2
+dL,dL,29,consonant; len-2
+l7,l7,27,consonant; len-2
 t8,t8,26,consonant; len-2
 sz,sz,25,consonant; len-2
-7d,7d,24,consonant; len-2
-r7,r7,24,consonant; len-2
+hn,hn,24,consonant; len-2
+7d,7d,23,consonant; len-2
 t7,t7,23,consonant; len-2
 !7,!7,21,consonant; len-2
-kl,kl,19,consonant; len-2
-sr,sr,19,consonant; len-2
-hm,hm,18,consonant; len-2
 hk,hk,17,consonant; len-2
-hl,hl,17,consonant; len-2
+r7,r7,17,consonant; len-2
 tn,tn,16,consonant; len-2
-TS,TS,15,consonant; len-2
-c7,c7,15,consonant; len-2
 dn,dn,15,consonant; len-2
-ht,ht,15,consonant; len-2
-s7,s7,14,consonant; len-2
+hl,hl,15,consonant; len-2
+c7,c7,14,consonant; len-2
+ht,ht,14,consonant; len-2
 Nm,Nm,13,consonant; len-2
-kN,kN,13,consonant; len-2
-pm,pm,13,consonant; len-2
+tS,tS,13,consonant; len-2
 !g,!g,12,consonant; len-2
 SZ,SZ,12,consonant; len-2
-k7,k7,11,consonant; len-2
+hm,hm,12,consonant; len-2
+kN,kN,12,consonant; len-2
+pm,pm,12,consonant; len-2
+s7,s7,12,consonant; len-2
 n5,n5,11,consonant; len-2
-dz,dz,10,consonant; len-2
 !N,!N,9,consonant; len-2
-ml,ml,9,consonant; len-2
-pl,pl,9,consonant; len-2
+k7,k7,9,consonant; len-2
+kl,kl,9,consonant; len-2
 pv,pv,9,consonant; len-2
-S7,S7,8,consonant; len-2
-bl,bl,8,consonant; len-2
-dZ,dZ,8,consonant; len-2
 dl,dl,8,consonant; len-2
 g!,g!,8,consonant; len-2
 g7,g7,8,consonant; len-2
-L7,L7,7,consonant; len-2
 bg,bg,7,consonant; len-2
-fv,fv,7,consonant; len-2
-gv,gv,7,consonant; len-2
-hr,hr,7,consonant; len-2
-lv,lv,7,consonant; len-2
+dz,dz,7,consonant; len-2
+ml,ml,7,consonant; len-2
 rt,rt,7,consonant; len-2
 7n,7n,6,consonant; len-2
 C7,C7,6,consonant; len-2
+S7,S7,6,consonant; len-2
 d7,d7,6,consonant; len-2
-gl,gl,6,consonant; len-2
+fv,fv,6,consonant; len-2
+gv,gv,6,consonant; len-2
 hp,hp,6,consonant; len-2
+hr,hr,6,consonant; len-2
 ks,ks,6,consonant; len-2
 kv,kv,6,consonant; len-2
 ps,ps,6,consonant; len-2
-rd,rd,6,consonant; len-2
 CZ,CZ,5,consonant; len-2
+bl,bl,5,consonant; len-2
 dj,dj,5,consonant; len-2
-h5,h5,5,consonant; len-2
 kf,kf,5,consonant; len-2
+lv,lv,5,consonant; len-2
 nr,nr,5,consonant; len-2
+rd,rd,5,consonant; len-2
 tv,tv,5,consonant; len-2
 !n,!n,4,consonant; len-2
 7b,7b,4,consonant; len-2
-Cv,Cv,4,consonant; len-2
 b7,b7,4,consonant; len-2
 bm,bm,4,consonant; len-2
 dT,dT,4,consonant; len-2
-dv,dv,4,consonant; len-2
+h5,h5,4,consonant; len-2
 h7,h7,4,consonant; len-2
-hv,hv,4,consonant; len-2
 rl,rl,4,consonant; len-2
 sZ,sZ,4,consonant; len-2
 sv,sv,4,consonant; len-2
 tf,tf,4,consonant; len-2
-tj,tj,4,consonant; len-2
 tk,tk,4,consonant; len-2
 x7,x7,4,consonant; len-2
 5n,5n,3,consonant; len-2
-Cr,Cr,3,consonant; len-2
-Nn,Nn,3,consonant; len-2
+Cv,Cv,3,consonant; len-2
+L7,L7,3,consonant; len-2
+TS,TS,3,consonant; len-2
 Xs,Xs,3,consonant; len-2
-ZZ,ZZ,3,consonant; len-2
+gl,gl,3,consonant; len-2
 gn,gn,3,consonant; len-2
 hs,hs,3,consonant; len-2
-kj,kj,3,consonant; len-2
+hv,hv,3,consonant; len-2
 nN,nN,3,consonant; len-2
 nl,nl,3,consonant; len-2
-p7,p7,3,consonant; len-2
 q!,q!,3,consonant; len-2
 q7,q7,3,consonant; len-2
-rj,rj,3,consonant; len-2
-rr,rr,3,consonant; len-2
 sl,sl,3,consonant; len-2
 !k,!k,2,consonant; len-2
 !r,!r,2,consonant; len-2
@@ -407,29 +375,28 @@ sl,sl,3,consonant; len-2
 87,87,2,consonant; len-2
 CS,CS,2,consonant; len-2
 Cf,Cf,2,consonant; len-2
-Nl,Nl,2,consonant; len-2
+Nn,Nn,2,consonant; len-2
 Nr,Nr,2,consonant; len-2
 Sf,Sf,2,consonant; len-2
-Tj,Tj,2,consonant; len-2
 Tv,Tv,2,consonant; len-2
-Z7,Z7,2,consonant; len-2
 cv,cv,2,consonant; len-2
 d8,d8,2,consonant; len-2
+dZ,dZ,2,consonant; len-2
+dv,dv,2,consonant; len-2
 fl,fl,2,consonant; len-2
 fs,fs,2,consonant; len-2
 gN,gN,2,consonant; len-2
-hN,hN,2,consonant; len-2
 hc,hc,2,consonant; len-2
 jZ,jZ,2,consonant; len-2
 kn,kn,2,consonant; len-2
-mm,mm,2,consonant; len-2
-mr,mr,2,consonant; len-2
+p7,p7,2,consonant; len-2
 pS,pS,2,consonant; len-2
+pl,pl,2,consonant; len-2
 sf,sf,2,consonant; len-2
 st,st,2,consonant; len-2
 tT,tT,2,consonant; len-2
+tj,tj,2,consonant; len-2
 xk,xk,2,consonant; len-2
-xv,xv,2,consonant; len-2
 zn,zn,2,consonant; len-2
 zr,zr,2,consonant; len-2
 !S,!S,1,consonant; len-2
@@ -437,13 +404,11 @@ zr,zr,2,consonant; len-2
 !t,!t,1,consonant; len-2
 7C,7C,1,consonant; len-2
 7S,7S,1,consonant; len-2
-7g,7g,1,consonant; len-2
 7j,7j,1,consonant; len-2
-7s,7s,1,consonant; len-2
+Cr,Cr,1,consonant; len-2
 S8,S8,1,consonant; len-2
 Sb,Sb,1,consonant; len-2
 Sk,Sk,1,consonant; len-2
-Sr,Sr,1,consonant; len-2
 St,St,1,consonant; len-2
 Sv,Sv,1,consonant; len-2
 T5,T5,1,consonant; len-2
@@ -451,25 +416,23 @@ Xk,Xk,1,consonant; len-2
 Xl,Xl,1,consonant; len-2
 Xm,Xm,1,consonant; len-2
 Xt,Xt,1,consonant; len-2
+Z7,Z7,1,consonant; len-2
 Zv,Zv,1,consonant; len-2
-bT,bT,1,consonant; len-2
 bq,bq,1,consonant; len-2
 cb,cb,1,consonant; len-2
 dt,dt,1,consonant; len-2
 fk,fk,1,consonant; len-2
-fr,fr,1,consonant; len-2
-gk,gk,1,consonant; len-2
 gr,gr,1,consonant; len-2
 hC,hC,1,consonant; len-2
+hN,hN,1,consonant; len-2
 hS,hS,1,consonant; len-2
-hq,hq,1,consonant; len-2
 j7,j7,1,consonant; len-2
 jv,jv,1,consonant; len-2
 kS,kS,1,consonant; len-2
-kr,kr,1,consonant; len-2
-lZ,lZ,1,consonant; len-2
+kj,kj,1,consonant; len-2
 lm,lm,1,consonant; len-2
 mN,mN,1,consonant; len-2
+mr,mr,1,consonant; len-2
 nL,nL,1,consonant; len-2
 nm,nm,1,consonant; len-2
 pd,pd,1,consonant; len-2
@@ -478,47 +441,54 @@ pn,pn,1,consonant; len-2
 pr,pr,1,consonant; len-2
 r5,r5,1,consonant; len-2
 rg,rg,1,consonant; len-2
+rj,rj,1,consonant; len-2
 rp,rp,1,consonant; len-2
 sC,sC,1,consonant; len-2
 sc,sc,1,consonant; len-2
 sn,sn,1,consonant; len-2
-ss,ss,1,consonant; len-2
+sr,sr,1,consonant; len-2
 tc,tc,1,consonant; len-2
 ts,ts,1,consonant; len-2
-tt,tt,1,consonant; len-2
 v7,v7,1,consonant; len-2
 vl,vl,1,consonant; len-2
 vn,vn,1,consonant; len-2
-vr,vr,1,consonant; len-2
-xS,xS,1,consonant; len-2
 xc,xc,1,consonant; len-2
 xq,xq,1,consonant; len-2
+xv,xv,1,consonant; len-2
 zl,zl,1,consonant; len-2
-zz,zz,1,consonant; len-2
-q!h,q!,5,consonant; len-2; aspirated
-!kh,!k,4,consonant; len-2; aspirated
-t8h,t8,4,consonant; len-2; aspirated
-tLh,tL,4,consonant; len-2; aspirated
-tSh,tS,3,consonant; len-2; aspirated
-tlh,tl,3,consonant; len-2; aspirated
-dlh,dl,2,consonant; len-2; aspirated
-7rh,7r,1,consonant; len-2; aspirated
-b7h,b7,1,consonant; len-2; aspirated
-dth,dt,1,consonant; len-2; aspirated
-pfh,pf,1,consonant; len-2; aspirated
-trh,tr,1,consonant; len-2; aspirated
-tsh,ts,1,consonant; len-2; aspirated
-tth,tt,1,consonant; len-2; aspirated
-tL",tL,45,consonant; len-2; glottalized
-t"8,t8,25,consonant; len-2; glottalized
+chz,cz,9,consonant; len-2; aspirated/devoiced
+q!h,q!,5,consonant; len-2; aspirated/devoiced
+!kh,!k,4,consonant; len-2; aspirated/devoiced
+Chv,Cv,4,consonant; len-2; aspirated/devoiced
+chv,cv,4,consonant; len-2; aspirated/devoiced
+t8h,t8,4,consonant; len-2; aspirated/devoiced
+tLh,tL,4,consonant; len-2; aspirated/devoiced
+thl,tl,4,consonant; len-2; aspirated/devoiced
+khv,kv,3,consonant; len-2; aspirated/devoiced
+tlh,tl,3,consonant; len-2; aspirated/devoiced
+dlh,dl,2,consonant; len-2; aspirated/devoiced
+thv,tv,2,consonant; len-2; aspirated/devoiced
+7rh,7r,1,consonant; len-2; aspirated/devoiced
+Ch7,C7,1,consonant; len-2; aspirated/devoiced
+Th7,T7,1,consonant; len-2; aspirated/devoiced
+b7h,b7,1,consonant; len-2; aspirated/devoiced
+dth,dt,1,consonant; len-2; aspirated/devoiced
+pfh,pf,1,consonant; len-2; aspirated/devoiced
+phl,pl,1,consonant; len-2; aspirated/devoiced
+phv,pv,1,consonant; len-2; aspirated/devoiced
+th8,t8,1,consonant; len-2; aspirated/devoiced
+trh,tr,1,consonant; len-2; aspirated/devoiced
+tsh,ts,1,consonant; len-2; aspirated/devoiced
+tL",tL,40,consonant; len-2; glottalized
+t"8,t8,8,consonant; len-2; glottalized
 k"v,kv,2,consonant; len-2; glottalized
 k"7,k7,1,consonant; len-2; glottalized
 pf",pf,1,consonant; len-2; glottalized
 p"r,pr,1,consonant; len-2; glottalized
 t8",t8,1,consonant; len-2; glottalized
-tS",tS,1,consonant; len-2; glottalized
 tl",tl,1,consonant; len-2; glottalized
 kpw,kp,33,consonant; len-2; labialized
+kw7,k7,5,consonant; len-2; labialized
 gbw,gb,4,consonant; len-2; labialized
 hkw,hk,4,consonant; len-2; labialized
 pfw,pf,3,consonant; len-2; labialized
@@ -527,16 +497,15 @@ drw,dr,2,consonant; len-2; labialized
 rkw,rk,2,consonant; len-2; labialized
 t8w,t8,2,consonant; len-2; labialized
 !nw,!n,1,consonant; len-2; labialized
-Skw,Sk,1,consonant; len-2; labialized
 bmw,bm,1,consonant; len-2; labialized
+kws,ks,1,consonant; len-2; labialized
 n5w,n5,1,consonant; len-2; labialized
 nrw,nr,1,consonant; len-2; labialized
 skw,sk,1,consonant; len-2; labialized
-srw,sr,1,consonant; len-2; labialized
 tfw,tf,1,consonant; len-2; labialized
-TSy,TS,5,consonant; len-2; palatalized
+xwn,xn,1,consonant; len-2; labialized
 tly,tl,3,consonant; len-2; palatalized
-ddy,dd,2,consonant; len-2; palatalized
+cy7,c7,2,consonant; len-2; palatalized
 gby,gb,2,consonant; len-2; palatalized
 hry,hr,2,consonant; len-2; palatalized
 Cny,Cn,1,consonant; len-2; palatalized
@@ -544,46 +513,47 @@ SZy,SZ,1,consonant; len-2; palatalized
 cny,cn,1,consonant; len-2; palatalized
 djy,dj,1,consonant; len-2; palatalized
 kpy,kp,1,consonant; len-2; palatalized
+ly7,l7,1,consonant; len-2; palatalized
 ldy,ld,1,consonant; len-2; palatalized
 nry,nr,1,consonant; len-2; palatalized
-tL"y,tL,1,consonant; len-2; palatalized; glottalized
+ty7,t7,1,consonant; len-2; palatalized
 tLX,tL,1,consonant; len-2; pharyngealized
-nd,nd,2003,consonant; len-2; prenasalized
-mb,mb,1665,consonant; len-2; prenasalized
-Ng,Ng,1057,consonant; len-2; prenasalized
-nt,nt,600,consonant; len-2; prenasalized
-ng,ng,274,consonant; len-2; prenasalized
-mp,mp,272,consonant; len-2; prenasalized
-Nk,Nk,268,consonant; len-2; prenasalized
-nj,nj,223,consonant; len-2; prenasalized
-nz,nz,153,consonant; len-2; prenasalized
-nc,nc,151,consonant; len-2; prenasalized
-nk,nk,93,consonant; len-2; prenasalized
-nC,nC,85,consonant; len-2; prenasalized
+nd,nd,1889,consonant; len-2; prenasalized
+mb,mb,1597,consonant; len-2; prenasalized
+Ng,Ng,1040,consonant; len-2; prenasalized
+nt,nt,558,consonant; len-2; prenasalized
+ng,ng,266,consonant; len-2; prenasalized
+mp,mp,250,consonant; len-2; prenasalized
+Nk,Nk,249,consonant; len-2; prenasalized
+nj,nj,212,consonant; len-2; prenasalized
+nz,nz,149,consonant; len-2; prenasalized
+nc,nc,143,consonant; len-2; prenasalized
+nk,nk,86,consonant; len-2; prenasalized
+nC,nC,80,consonant; len-2; prenasalized
 nT,nT,68,consonant; len-2; prenasalized
-mv,mv,63,consonant; len-2; prenasalized
-ns,ns,56,consonant; len-2; prenasalized
-n!,n!,39,consonant; len-2; prenasalized
-m7,m7,32,consonant; len-2; prenasalized
+mv,mv,62,consonant; len-2; prenasalized
+ns,ns,55,consonant; len-2; prenasalized
+n!,n!,38,consonant; len-2; prenasalized
+m7,m7,28,consonant; len-2; prenasalized
 n8,n8,26,consonant; len-2; prenasalized
-n7,n7,24,consonant; len-2; prenasalized
-nv,nv,22,consonant; len-2; prenasalized
-mf,mf,21,consonant; len-2; prenasalized
+n7,n7,23,consonant; len-2; prenasalized
 nS,nS,20,consonant; len-2; prenasalized
+mf,mf,19,consonant; len-2; prenasalized
 nb,nb,19,consonant; len-2; prenasalized
-4d,4d,17,consonant; len-2; prenasalized
-nZ,nZ,17,consonant; len-2; prenasalized
-N7,N7,16,consonant; len-2; prenasalized
+nv,nv,17,consonant; len-2; prenasalized
+4d,4d,16,consonant; len-2; prenasalized
+N7,N7,15,consonant; len-2; prenasalized
+nZ,nZ,15,consonant; len-2; prenasalized
 5T,5T,13,consonant; len-2; prenasalized
-np,np,12,consonant; len-2; prenasalized
-5j,5j,10,consonant; len-2; prenasalized
+5j,5j,9,consonant; len-2; prenasalized
+np,np,9,consonant; len-2; prenasalized
 N!,N!,8,consonant; len-2; prenasalized
-Nq,Nq,8,consonant; len-2; prenasalized
-nq,nq,7,consonant; len-2; prenasalized
+Nq,Nq,7,consonant; len-2; prenasalized
 mt,mt,6,consonant; len-2; prenasalized
-NG,NG,5,consonant; len-2; prenasalized
+nq,nq,6,consonant; len-2; prenasalized
 nf,nf,5,consonant; len-2; prenasalized
 57,57,4,consonant; len-2; prenasalized
+NG,NG,4,consonant; len-2; prenasalized
 Nb,Nb,4,consonant; len-2; prenasalized
 5C,5C,3,consonant; len-2; prenasalized
 Nd,Nd,3,consonant; len-2; prenasalized
@@ -602,34 +572,32 @@ Np,Np,1,consonant; len-2; prenasalized
 Ns,Ns,1,consonant; len-2; prenasalized
 Nt,Nt,1,consonant; len-2; prenasalized
 m!,m!,1,consonant; len-2; prenasalized
-mC,mC,1,consonant; len-2; prenasalized
 mj,mj,1,consonant; len-2; prenasalized
 mk,mk,1,consonant; len-2; prenasalized
-nth,nt,15,consonant; len-2; prenasalized; aspirated
-mph,mp,11,consonant; len-2; prenasalized; aspirated
-nCh,nC,9,consonant; len-2; prenasalized; aspirated
-Nkh,Nk,7,consonant; len-2; prenasalized; aspirated
-nch,nc,6,consonant; len-2; prenasalized; aspirated
-5Ch,5C,3,consonant; len-2; prenasalized; aspirated
-mbh,mb,3,consonant; len-2; prenasalized; aspirated
-ndh,nd,3,consonant; len-2; prenasalized; aspirated
-nsh,ns,3,consonant; len-2; prenasalized; aspirated
-Nqh,Nq,2,consonant; len-2; prenasalized; aspirated
-mqh,mq,1,consonant; len-2; prenasalized; aspirated
-nkh,nk,1,consonant; len-2; prenasalized; aspirated
-nqh,nq,1,consonant; len-2; prenasalized; aspirated
-nzh,nz,1,consonant; len-2; prenasalized; aspirated
+mph,mp,10,consonant; len-2; prenasalized; aspirated/devoiced
+nth,nt,8,consonant; len-2; prenasalized; aspirated/devoiced
+Nkh,Nk,7,consonant; len-2; prenasalized; aspirated/devoiced
+nCh,nC,6,consonant; len-2; prenasalized; aspirated/devoiced
+nch,nc,6,consonant; len-2; prenasalized; aspirated/devoiced
+5Ch,5C,3,consonant; len-2; prenasalized; aspirated/devoiced
+mbh,mb,3,consonant; len-2; prenasalized; aspirated/devoiced
+ndh,nd,3,consonant; len-2; prenasalized; aspirated/devoiced
+nsh,ns,3,consonant; len-2; prenasalized; aspirated/devoiced
+Nqh,Nq,2,consonant; len-2; prenasalized; aspirated/devoiced
+nkh,nk,1,consonant; len-2; prenasalized; aspirated/devoiced
+nqh,nq,1,consonant; len-2; prenasalized; aspirated/devoiced
+nzh,nz,1,consonant; len-2; prenasalized; aspirated/devoiced
 nk",nk,3,consonant; len-2; prenasalized; glottalized
 nt",nt,3,consonant; len-2; prenasalized; glottalized
 Nk",Nk,2,consonant; len-2; prenasalized; glottalized
 nc",nc,2,consonant; len-2; prenasalized; glottalized
 nC",nC,1,consonant; len-2; prenasalized; glottalized
 mbw,mb,94,consonant; len-2; prenasalized; labialized
-Ngw,Ng,92,consonant; len-2; prenasalized; labialized
+Ngw,Ng,91,consonant; len-2; prenasalized; labialized
 Nkw,Nk,14,consonant; len-2; prenasalized; labialized
-ngw,ng,14,consonant; len-2; prenasalized; labialized
 ndw,nd,11,consonant; len-2; prenasalized; labialized
 ntw,nt,10,consonant; len-2; prenasalized; labialized
+ngw,ng,9,consonant; len-2; prenasalized; labialized
 mvw,mv,7,consonant; len-2; prenasalized; labialized
 njw,nj,6,consonant; len-2; prenasalized; labialized
 mfw,mf,5,consonant; len-2; prenasalized; labialized
@@ -649,7 +617,7 @@ ndy,nd,33,consonant; len-2; prenasalized; palatalized
 Ngy,Ng,25,consonant; len-2; prenasalized; palatalized
 mpy,mp,24,consonant; len-2; prenasalized; palatalized
 5dy,5d,13,consonant; len-2; prenasalized; palatalized
-mby,mb,12,consonant; len-2; prenasalized; palatalized
+mby,mb,10,consonant; len-2; prenasalized; palatalized
 Nky,Nk,7,consonant; len-2; prenasalized; palatalized
 nty,nt,7,consonant; len-2; prenasalized; palatalized
 nky,nk,6,consonant; len-2; prenasalized; palatalized
@@ -666,151 +634,116 @@ nsy,ns,1,consonant; len-2; prenasalized; palatalized
 ndX,nd,1,consonant; len-2; prenasalized; pharyngealized
 mbx,mb,3,consonant; len-2; prenasalized; velarized
 Ngx,Ng,1,consonant; len-2; prenasalized; velarized
+kx7,k7,7,consonant; len-2; velarized
+!x7,!7,5,consonant; len-2; velarized
 !gx,!g,2,consonant; len-2; velarized
-chz,chz,9,consonant; len-3
-kx7,kx7,7,consonant; len-3
-!x7,!x7,5,consonant; len-3
-kw7,kw7,5,consonant; len-3
+7xT,7T,1,consonant; len-2; velarized
+cxv,cv,1,consonant; len-2; velarized
 vrd,vrd,5,consonant; len-3
-Chv,Chv,4,consonant; len-3
-chv,chv,4,consonant; len-3
-thl,thl,4,consonant; len-3
-khv,khv,3,consonant; len-3
-cy7,cy7,2,consonant; len-3
-qmb,qmb,2,consonant; len-3
 rnd,rnd,2,consonant; len-3
-thv,thv,2,consonant; len-3
 tl7,tl7,2,consonant; len-3
 !kp,!kp,1,consonant; len-3
 !nS,!nS,1,consonant; len-3
 7nd,7nd,1,consonant; len-3
-7xT,7xT,1,consonant; len-3
-Ch7,Ch7,1,consonant; len-3
 Sk7,Sk7,1,consonant; len-3
-Th7,Th7,1,consonant; len-3
 Xsd,Xsd,1,consonant; len-3
-bl7,bl7,1,consonant; len-3
-cxv,cxv,1,consonant; len-3
-dhg,dhg,1,consonant; len-3
 gbm,gbm,1,consonant; len-3
 hnt,hnt,1,consonant; len-3
-khr,khr,1,consonant; len-3
 kpn,kpn,1,consonant; len-3
-kws,kws,1,consonant; len-3
-ly7,ly7,1,consonant; len-3
-phl,phl,1,consonant; len-3
-phv,phv,1,consonant; len-3
-qnj,qnj,1,consonant; len-3
 rkr,rkr,1,consonant; len-3
-th7,th7,1,consonant; len-3
-th8,th8,1,consonant; len-3
-tt7,tt7,1,consonant; len-3
-ty7,ty7,1,consonant; len-3
-xwn,xwn,1,consonant; len-3
-rp"r,rpr,1,consonant; len-3; glottalized
-ndr,ndr,133,consonant; len-3; prenasalized
+tth7,tt7,1,consonant; len-3; aspirated/devoiced
+ttS",ttS,1,consonant; len-3; glottalized
+nngw,nng,1,consonant; len-3; labialized
+TTSy,TTS,2,consonant; len-3; palatalized
+ndr,ndr,132,consonant; len-3; prenasalized
 mgb,mgb,61,consonant; len-3; prenasalized
 Ngb,Ngb,12,consonant; len-3; prenasalized
 ndL,ndL,10,consonant; len-3; prenasalized
 ngb,ngb,10,consonant; len-3; prenasalized
 mkp,mkp,8,consonant; len-3; prenasalized
-npl,npl,8,consonant; len-3; prenasalized
+npl,npl,6,consonant; len-3; prenasalized
 ntL,ntL,5,consonant; len-3; prenasalized
-ntr,ntr,5,consonant; len-3; prenasalized
 mpf,mpf,4,consonant; len-3; prenasalized
-njr,njr,4,consonant; len-3; prenasalized
-mbl,mbl,3,consonant; len-3; prenasalized
 mpl,mpl,3,consonant; len-3; prenasalized
-nbl,nbl,3,consonant; len-3; prenasalized
 ndj,ndj,3,consonant; len-3; prenasalized
 ntf,ntf,3,consonant; len-3; prenasalized
 Nkp,Nkp,2,consonant; len-3; prenasalized
-mbr,mbr,2,consonant; len-3; prenasalized
 ndl,ndl,2,consonant; len-3; prenasalized
 ndv,ndv,2,consonant; len-3; prenasalized
 nkp,nkp,2,consonant; len-3; prenasalized
 ntl,ntl,2,consonant; len-3; prenasalized
 ntn,ntn,2,consonant; len-3; prenasalized
-Nkl,Nkl,1,consonant; len-3; prenasalized
-Nqr,Nqr,1,consonant; len-3; prenasalized
+ntr,ntr,2,consonant; len-3; prenasalized
 mSk,mSk,1,consonant; len-3; prenasalized
+mbr,mbr,1,consonant; len-3; prenasalized
 mbv,mbv,1,consonant; len-3; prenasalized
-nbr,nbr,1,consonant; len-3; prenasalized
 nd7,nd7,1,consonant; len-3; prenasalized
 ndZ,ndZ,1,consonant; len-3; prenasalized
 ndg,ndg,1,consonant; len-3; prenasalized
-nh7,nh7,1,consonant; len-3; prenasalized
 njZ,njZ,1,consonant; len-3; prenasalized
-nkl,nkl,1,consonant; len-3; prenasalized
 nsm,nsm,1,consonant; len-3; prenasalized
 ntS,ntS,1,consonant; len-3; prenasalized
 nts,nts,1,consonant; len-3; prenasalized
 ntv,ntv,1,consonant; len-3; prenasalized
-y,y,38625,semivowel; len-1
-w,w,38223,semivowel; len-1
-wh,w,25,semivowel; len-1; aspirated
-yh,y,14,semivowel; len-1; aspirated
-w",w,145,semivowel; len-1; glottalized
-y",y,109,semivowel; len-1; glottalized
-yw,y,34,semivowel; len-1; labialized
-ww,w,3,semivowel; len-1; labialized
-w*,w,79,semivowel; len-1; nasalized
-y*,y,61,semivowel; len-1; nasalized
-wy,w,14,semivowel; len-1; palatalized
-yy,y,1,semivowel; len-1; palatalized
-wX,w,3,semivowel; len-1; pharyngealized
+y,y,26949,semivowel; len-1
+w,w,26575,semivowel; len-1
+wh,w,20,semivowel; len-1; aspirated/devoiced
+yh,y,11,semivowel; len-1; aspirated/devoiced
+w",w,116,semivowel; len-1; glottalized
+y",y,46,semivowel; len-1; glottalized
+yw,y,33,semivowel; len-1; labialized
+w*,w,54,semivowel; len-1; nasalized
+y*,y,31,semivowel; len-1; nasalized
+wy,w,11,semivowel; len-1; palatalized
+wX,w,2,semivowel; len-1; pharyngealized
 yX,y,1,semivowel; len-1; pharyngealized
 wx,w,1,semivowel; len-1; velarized
-y7,y7,36,semivowel; len-2
-w7,w7,12,semivowel; len-2
+y7,y7,26,semivowel; len-2
+w7,w7,10,semivowel; len-2
 wn,wn,6,semivowel; len-2
-wr,wr,6,semivowel; len-2
+wr,wr,5,semivowel; len-2
 yn,yn,4,semivowel; len-2
 wd,wd,2,semivowel; len-2
 wj,wj,2,semivowel; len-2
 wk,wk,2,semivowel; len-2
 wq,wq,2,semivowel; len-2
-wN,wN,1,semivowel; len-2
 wb,wb,1,semivowel; len-2
 wl,wl,1,semivowel; len-2
-wm,wm,1,semivowel; len-2
-wp,wp,1,semivowel; len-2
-wv,wv,1,semivowel; len-2
 yk,yk,1,semivowel; len-2
-yt,yt,1,semivowel; len-2
 yz,yz,1,semivowel; len-2
-wrh,wr,1,semivowel; len-2; aspirated
-w"v,wv,1,semivowel; len-2; glottalized
+whn,wn,1,semivowel; len-2; aspirated/devoiced
+wrh,wr,1,semivowel; len-2; aspirated/devoiced
 wsk,wsk,2,semivowel; len-3
 w7r,w7r,1,semivowel; len-3
 w7t,w7t,1,semivowel; len-3
-whn,whn,1,semivowel; len-3
 wt7,wt7,1,semivowel; len-3
 y7t,y7t,1,semivowel; len-3
-a,a,279976,vowel; len-1
-i,i,192907,vowel; len-1
-u,u,137942,vowel; len-1
-o,o,132815,vowel; len-1
-e,e,96073,vowel; len-1
-3,3,46579,vowel; len-1
-E,E,36268,vowel; len-1
-aw,a,11,vowel; len-1; labialized
-ow,o,9,vowel; len-1; labialized
+a,a,196571,vowel; len-1
+i,i,138120,vowel; len-1
+u,u,97611,vowel; len-1
+o,o,90205,vowel; len-1
+e,e,66480,vowel; len-1
+3,3,32593,vowel; len-1
+E,E,24096,vowel; len-1
+aw,a,3,vowel; len-1; labialized
+ow,o,3,vowel; len-1; labialized
 3w,3,1,vowel; len-1; labialized
 Ew,E,1,vowel; len-1; labialized
-uw,u,1,vowel; len-1; labialized
-a*,a,3717,vowel; len-1; nasalized
-i*,i,2786,vowel; len-1; nasalized
-o*,o,2751,vowel; len-1; nasalized
-u*,u,2174,vowel; len-1; nasalized
-e*,e,1286,vowel; len-1; nasalized
-E*,E,1099,vowel; len-1; nasalized
-3*,3,546,vowel; len-1; nasalized
-ay,a,14,vowel; len-1; palatalized
-ey,e,8,vowel; len-1; palatalized
-oy,o,3,vowel; len-1; palatalized
-3y,3,2,vowel; len-1; palatalized
+a*,a,3002,vowel; len-1; nasalized
+i*,i,2256,vowel; len-1; nasalized
+o*,o,2100,vowel; len-1; nasalized
+u*,u,1688,vowel; len-1; nasalized
+e*,e,1012,vowel; len-1; nasalized
+E*,E,705,vowel; len-1; nasalized
+3*,3,491,vowel; len-1; nasalized
+ay,a,5,vowel; len-1; palatalized
+ey,e,5,vowel; len-1; palatalized
 Ey,E,2,vowel; len-1; palatalized
-iy,i,2,vowel; len-1; palatalized
+3y,3,1,vowel; len-1; palatalized
+iy,i,1,vowel; len-1; palatalized
 3r,3r,2,vowel; len-2
-ukw",uk,1,vowel; len-2; labialized; glottalized
+a*7,a7,2,vowel; len-2; nasalized
+a*d,ad,1,vowel; len-2; nasalized
+a*g,ag,1,vowel; len-2; nasalized
+i*7,i7,1,vowel; len-2; nasalized
+i*dy,id,1,vowel; len-2; palatalized; nasalized
