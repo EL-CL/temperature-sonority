@@ -40,9 +40,10 @@ All extracted data files are in the [`data`](data/) folder.
 - [`sonorities.csv`](data/sonorities.csv): Mean sonority index (MSI) of each filtered doculect. We adapted 5 methods to calculate MSI from ASJP codes:
   - `index0`: Parker’s scale, from [Sonority](https://doi.org/10.1002/9781444335262.wbctp0049) in *The Blackwell Companion to Phonology*
   - `index1`: Fought’s scale, from [Sonority and climate in a world sample of languages: Findings and prospects](https://doi.org/10.1177/1069397103259439)
-  - `index2`: Clements’s scale, from [The role of the sonority cycle in core syllabification](https://doi.org/10.1017/cbo9780511627736.017) in *Papers in Laboratory Phonology*
-  - `index3`: Sonorant index (here obstruent = 1; sonorant = 2)
-  - `index4`: Vowel index (here consonant = 1; semivowel = 2; vowel = 3)
+  - `index2`: List’s scale, from [*Sequence Comparison in Historical Linguistics*](https://doi.org/10.1515/9783110720082)
+  - `index3`: Clements’s scale, from [The role of the sonority cycle in core syllabification](https://doi.org/10.1017/cbo9780511627736.017) in *Papers in Laboratory Phonology*
+  - `index4`: Sonorant index (here obstruent = 1; sonorant = 2)
+  - `index5`: Vowel index (here consonant = 1; semivowel = 2; vowel = 3)
 - [`phones.csv`](data/phones.csv): Extracted phones from all doculects
 - [`word_structures.csv`](data/word_structures.csv): Word structures statistics of all doculects, characterized by `C` (= consonant) and `V` (= vowel) symbols
 - [`word_structures_grouped.csv`](data/word_structures_grouped.csv): Word lengths statistics of all doculects

@@ -6,33 +6,34 @@ sonority_scales = [
     # Scale no:
     # 0: Parker's
     # 1: Fought's
-    # 2: Clements'
-    # 3: Obstruent-Sonorant
-    # 4: C-V
+    # 2: List's
+    # 3: Clements's
+    # 4: Obstruent-Sonorant
+    # 5: C-V
     # Sonority index for clicks can be re-assigned in set_token2index()
     #
     # ASJPcode     Sonority index      Type of sounds
-    #     scale no: 0   1  2  3  4
-    ('!      ', [1,     2, 1, 1, 1],           'click'),
-    ('      7', [1,     2, 1, 1, 1],  'guttural plosive'),
-    ('p tTkq ', [1,     2, 1, 1, 1], 'voiceless plosive'),
-    ('b d gG ', [4,     2, 1, 1, 1],    'voiced plosive'),
-    ('  cC   ', [2,     3, 1, 1, 1], 'voiceless affricate'),
-    ('   j   ', [5,   2.5, 1, 1, 1],    'voiced affricate'),
-    ('f8sS   ', [3,     4, 1, 1, 1], 'voiceless fricative'),
-    ('v zZ   ', [6,     3, 1, 1, 1],    'voiced fricative'),
-    ('    xXh', [4,     4, 1, 1, 1],  'guttural fricative'),
-    ('m4n5N  ', [7,     9, 2, 2, 1],           'nasal'),
-    ('  lL   ', [9,    17, 3, 2, 1],           'lateral'),
-    ('  r    ', [10,   36, 3, 2, 1],           'rhotic'),
-    ('    w  ', [12,   27, 4, 2, 2],       'back semivowel'),
-    ('   y   ', [12,   43, 4, 2, 2],      'front semivowel'),
-    ('    3  ', [13,   55, 5, 2, 3],   'interior vowel'),
-    ('   i   ', [15,   41, 5, 2, 3], 'high front vowel'),
-    ('    u  ', [15,   65, 5, 2, 3],  'high back vowel'),
-    ('   e   ', [16,   69, 5, 2, 3],        'mid vowel'),
-    ('   Eo  ', [16.5, 75, 5, 2, 3],    'mid/low vowel'),
-    ('   a   ', [17,  100, 5, 2, 3],        'low vowel'),
+    #     scale no: 0   1  2  3  4  5
+    ('!      ', [1,     2, 1, 1, 1, 1],           'click'),
+    ('      7', [1,     2, 1, 1, 1, 1],  'guttural plosive'),
+    ('p tTkq ', [1,     2, 1, 1, 1, 1], 'voiceless plosive'),
+    ('b d gG ', [4,     2, 1, 1, 1, 1],    'voiced plosive'),
+    ('  cC   ', [2,     3, 2, 1, 1, 1], 'voiceless affricate'),
+    ('   j   ', [5,   2.5, 2, 1, 1, 1],    'voiced affricate'),
+    ('f8sS   ', [3,     4, 3, 1, 1, 1], 'voiceless fricative'),
+    ('v zZ   ', [6,     3, 3, 1, 1, 1],    'voiced fricative'),
+    ('    xXh', [4,     4, 3, 1, 1, 1],  'guttural fricative'),
+    ('m4n5N  ', [7,     9, 4, 2, 2, 1],           'nasal'),
+    ('  lL   ', [9,    17, 5, 3, 2, 1],           'lateral'),
+    ('  r    ', [10,   36, 5, 3, 2, 1],           'rhotic'),
+    ('    w  ', [12,   27, 6, 4, 2, 2],       'back semivowel'),
+    ('   y   ', [12,   43, 6, 4, 2, 2],      'front semivowel'),
+    ('    3  ', [13,   55, 7, 5, 2, 3],   'interior vowel'),
+    ('   i   ', [15,   41, 7, 5, 2, 3], 'high front vowel'),
+    ('    u  ', [15,   65, 7, 5, 2, 3],  'high back vowel'),
+    ('   e   ', [16,   69, 7, 5, 2, 3],        'mid vowel'),
+    ('   Eo  ', [16.5, 75, 7, 5, 2, 3],    'mid/low vowel'),
+    ('   a   ', [17,  100, 7, 5, 2, 3],        'low vowel'),
 ]
 
 token2type = dict([(token, line[2]) for line in sonority_scales
@@ -88,7 +89,7 @@ def phone2base_and_tags(phone):
             tags.add(suffix_tags[phone[i]])
             phone[i] = ''
     phone = ''.join(phone)
-    tags = list(tags)
+    tags = sorted(list(tags))
     if len(phone) > 1 \
             and token2type[phone[0]] == 'nasal' \
             and re.search('click|plos|fric', token2type[phone[1]]):
