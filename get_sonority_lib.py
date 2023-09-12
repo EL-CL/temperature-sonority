@@ -1,6 +1,10 @@
 import os.path
 from sonority_index_lib import *
 from pyasjp.api import ASJP
+from lingpy.sequence.sound_classes import tokens2class
+from lingpy.settings import rc
+
+rc(schema="asjp")
 
 doculects_to_exclude = [
     # Having no vowels
@@ -165,9 +169,13 @@ def write_word_structures(structures, word_structures_filename, word_lengths_fil
         f.writelines([','.join(line) + '\n' for line in result])
 
 
-def doculect2index(doculect, average_by_meaning, with_loan, is_word_length=False):
+def doculect2index(doculect, average_by_meaning, with_loan, is_word_length=False, use_lingpy_model=False):
     def word2value(word):
-        return len(word2phones(word)) if is_word_length else word2index(word)
+        if is_word_length:
+            return len(word2phones(word))
+        if use_lingpy_model:
+            return average([int(i) for i in tokens2class(word2phones(word), 'art')])
+        return word2index(word)
     if average_by_meaning:
         indices = []
         for synset in doculect.synsets:
@@ -181,13 +189,17 @@ def doculect2index(doculect, average_by_meaning, with_loan, is_word_length=False
     return average(indices)
 
 
-def get_sonority_indices(doculects, average_by_meaning, with_loan, scale_no, index_for_click):
+def get_sonority_indices(doculects, average_by_meaning, with_loan, scale_no, index_for_click, use_lingpy_model=False):
     set_token2index(scale_no, index_for_click)
     return [doculect2index(d, average_by_meaning, with_loan) for d in doculects]
 
 
+def get_sonority_indices_lingpy_model(doculects, average_by_meaning, with_loan):
+    return [doculect2index(d, average_by_meaning, with_loan, use_lingpy_model=True) for d in doculects]
+
+
 def get_word_lengths(doculects, average_by_meaning, with_loan):
-    return [doculect2index(d, average_by_meaning, with_loan, True) for d in doculects]
+    return [doculect2index(d, average_by_meaning, with_loan, is_word_length=True) for d in doculects]
 
 
 def get_all_sonority_indices(doculects, average_by_meaning, with_loan, indices_for_click):

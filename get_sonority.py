@@ -16,6 +16,7 @@ phone_counts = lib.get_phone_counts(doculects)
 lib.write_classified_phones(lib.classify_phones(phone_counts), 'data/phones.csv')  # optional
 
 all_sonority_indices = lib.get_all_sonority_indices(doculects, True, False, None)
+all_sonority_indices.append(lib.get_sonority_indices_lingpy_model(doculects, True, False))
 word_lengths = lib.get_word_lengths(doculects, True, False)
 geometries = lib.get_geometries(doculects)
 lib.write_geometries_and_indices(doculects, all_sonority_indices, word_lengths, geometries, 'data/sonorities.csv')

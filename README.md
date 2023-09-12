@@ -44,6 +44,7 @@ All extracted data files are in the [`data`](data/) folder.
   - `index3`: Clements’s scale, from [The role of the sonority cycle in core syllabification](https://doi.org/10.1017/cbo9780511627736.017) in *Papers in Laboratory Phonology*
   - `index4`: Sonorant index (here obstruent = 1; sonorant = 2)
   - `index5`: Vowel index (here consonant = 1; semivowel = 2; vowel = 3)
+  - `index6`: List’s scale, calculated using [LingPy `tokens2class()`](https://lingpy.org/reference/lingpy.sequence.html#lingpy.sequence.sound_classes.tokens2class)
 - [`phones.csv`](data/phones.csv): Extracted phones from all doculects
 - [`word_structures.csv`](data/word_structures.csv): Word structures statistics of all doculects, characterized by `C` (= consonant) and `V` (= vowel) symbols
 - [`word_structures_grouped.csv`](data/word_structures_grouped.csv): Word lengths statistics of all doculects
@@ -52,7 +53,7 @@ All extracted data files are in the [`data`](data/) folder.
 
 - [`data.csv`](data/data.csv): Data for each filtered doculect, with temperature data and linguistic data combined
   - `WL`: Mean word length
-  - `Index0` to `Index4`: MSIs in 5 methods
+  - `Index0` to `Index6`: MSIs in 7 methods
   - `T`: Mean annual temperature
   - `T_max`: Max of 41-year mean monthly temperatures
   - `T_min`: Min of 41-year mean monthly temperatures

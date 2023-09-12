@@ -212,12 +212,12 @@ summary(m_wl_all_3)
 # Linear correlation between different sonority scales (for SI)
 # =============================================================
 
-r2s <- matrix(0, 5, 5)
-ps <- matrix(0, 5, 5)
-r2s_trans <- matrix(0, 5, 5)
-ps_trans <- matrix(0, 5, 5)
-for (i in 0:4) {
-  for (j in 0:4) {
+r2s <- matrix(0, 6, 6)
+ps <- matrix(0, 6, 6)
+r2s_trans <- matrix(0, 6, 6)
+ps_trans <- matrix(0, 6, 6)
+for (i in 0:5) {
+  for (j in 0:5) {
     if (i == j) next
     fomula <- paste("Index", i, " ~ ", "Index", j, sep = "")
     fomula_trans <- paste("Index", i, "_trans ~ ", "Index", j, "_trans", sep = "")
@@ -377,3 +377,15 @@ ggplot(data = filter(d_all, Family %in% top_families), aes(WL, Index0_trans)) +
         axis.text.y = element_text(color = "black")) +
   xlab("Mean word length") + ylab("MSI (transformed)")
 # Then, save as word_length_by_family.pdf (8 * 8 inches)
+
+
+# Appendix: Compare MSIs by this model and by the LingPy model
+# ============================================================
+
+m <- lm(Index6 ~ Index2, data = d_all)
+summary(m)
+ggplot(d, aes(index2, index6)) +
+  geom_point(color = "blue", alpha = 0.05) +
+  #geom_smooth(method = lm, color = "black") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  xlab("MSI (our model)") + ylab("MSI (LingPy model)")
