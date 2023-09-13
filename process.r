@@ -379,6 +379,42 @@ ggplot(data = filter(d_all, Family %in% top_families), aes(WL, Index0_trans)) +
 # Then, save as word_length_by_family.pdf (8 * 8 inches)
 
 
+# Plot correlations between vowel length solutions (for SI)
+# =========================================================
+
+d_vow <- read.csv("data/vowel_length_solutions.csv")
+m1 <- lm(current ~ merge_vowels, data = d_vow)
+m2 <- lm(current ~ double_monophthongs, data = d_vow)
+m3 <- lm(merge_vowels ~ double_monophthongs, data = d_vow)
+summary(m1)
+summary(m2)
+summary(m3)
+
+p1 <- ggplot(d_vow, aes(current, merge_vowels)) +
+  geom_point(color = "blue", stroke = NA, alpha = 0.1) +
+  geom_smooth(method = lm, color = "black") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab("MSI A (current)") + ylab("MSI B (merge vowels)")
+p2 <- ggplot(d_vow, aes(current, double_monophthongs)) +
+  geom_point(color = "blue", stroke = NA, alpha = 0.1) +
+  geom_smooth(method = lm, color = "black") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab("MSI A (current)") + ylab("MSI C (double monophthongs)")
+p3 <- ggplot(d_vow, aes(merge_vowels, double_monophthongs)) +
+  geom_point(color = "blue", stroke = NA, alpha = 0.1) +
+  geom_smooth(method = lm, color = "black") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black")) +
+  xlab("MSI B (merge vowels)") + ylab("MSI C (double monophthongs)")
+gridExtra::grid.arrange(p1, p2, p3, ncol = 2)
+# Then, save as vowel_length_solutions.pdf (8 * 8 inches)
+
+
 # Appendix: Compare MSIs by this model and by the LingPy model
 # ============================================================
 

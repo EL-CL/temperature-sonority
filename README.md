@@ -26,6 +26,10 @@ Run `python process.py`. Results will be saved as `data.csv`, `data_genus.csv`, 
 
 Run corresponding code blocks in `process.r` in R.
 
+### 6. Compare vowel length solutions
+
+Run `python test_vowel_length_solutions.py [raw_path]`. Results will be saved as `data/vowel_length_solutions.csv`. Then, run code block of “Plot correlations between vowel length solutions” in `process.r` to plot correlations.
+
 ## Data
 
 All extracted data files are in the [`data`](data/) folder.
@@ -48,6 +52,7 @@ All extracted data files are in the [`data`](data/) folder.
 - [`phones.csv`](data/phones.csv): Extracted phones from all doculects
 - [`word_structures.csv`](data/word_structures.csv): Word structures statistics of all doculects, characterized by `C` (= consonant) and `V` (= vowel) symbols
 - [`word_structures_grouped.csv`](data/word_structures_grouped.csv): Word lengths statistics of all doculects
+- [`vowel_length_solutions.csv`](data/vowel_length_solutions.csv): MSI results under three vowel length solutions
 
 ### Combined Data
 
@@ -75,3 +80,4 @@ All saved figure files are in the [`figures`](figures/) folder.
 - [`word_length.pdf`](figures/word_length.pdf): Relationship between mean word length and MSI or MAT
 - [`word_length_by_family.pdf`](figures/word_length_by_family.pdf): Relationship between MSI and mean word length of the top 25 largest families
 - [`range.pdf`](figures/range.pdf): Relationship between mean annual range and MAT
+- [`vowel_length_solutions.pdf`](figures/vowel_length_solutions.pdf): Relationship between vowel length solutions

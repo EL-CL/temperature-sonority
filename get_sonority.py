@@ -12,10 +12,10 @@ words_to_include = [  # 40 words
     'star', 'water', 'stone', 'fire', 'path', 'mountain', 'night', 'full', 'new', 'name',
 ]
 doculects = lib.filter_doculects(doculects, words_to_include, 'data/temperatures.csv')
-phone_counts = lib.get_phone_counts(doculects)
+phone_counts = lib.get_phone_counts(doculects)  # optional
 lib.write_classified_phones(lib.classify_phones(phone_counts), 'data/phones.csv')  # optional
 
-all_sonority_indices = lib.get_all_sonority_indices(doculects, True, False, None)
+all_sonority_indices = lib.get_all_sonority_indices(doculects, True, False)
 all_sonority_indices.append(lib.get_sonority_indices_lingpy_model(doculects, True, False))
 word_lengths = lib.get_word_lengths(doculects, True, False)
 geometries = lib.get_geometries(doculects)

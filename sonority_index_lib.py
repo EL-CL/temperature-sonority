@@ -120,18 +120,18 @@ def split_geminate_tokens(tokens):
     return tokens
 
 
-def word2phones(word):
+def word2phones(word, merge_vowels=False):
     word = word.replace(' ', '')
     for pair in asjp2tokens_patch.items():
         word = word.replace(*pair)
-    phones = asjp2tokens(word, merge_vowels=False)
+    phones = asjp2tokens(word, merge_vowels)
     phones = [phone.replace('~', '').replace('$', '') for phone in phones]
     phones = split_geminate_tokens(phones)
     return phones
 
 
-def word2index(word):
-    return average([phone2index(i) for i in word2phones(word)])
+def word2index(word, merge_vowels=False):
+    return average([phone2index(i) for i in word2phones(word, merge_vowels)])
 
 
 def classify_phones(phone_counts):
