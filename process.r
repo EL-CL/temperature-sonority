@@ -106,7 +106,8 @@ p1 <- ggplot() +
   ggtitle("Macroareas") +
   xlab("MAT (°C)") + ylab("MSI")
 p2 <- ggplot() +
-  geom_point(data = d_fam_mean, aes(T_trans, Index0_trans), color = "blue", alpha = 0.7) +
+  geom_point(data = d_fam_mean, aes(T_trans, Index0_trans),
+             color = "blue", stroke = NA, size = 2, alpha = 0.7) +
   geom_line(data = e_fam, aes(x, predicted)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
@@ -115,7 +116,8 @@ p2 <- ggplot() +
   ggtitle("Families") +
   xlab("MAT (transformed)") + ylab("MSI (transformed)")
 p3 <- ggplot() +
-  geom_point(data = d_all, aes(T_trans, Index0_trans), color = "blue", alpha = 0.08) +
+  geom_point(data = d_all, aes(T_trans, Index0_trans),
+             color = "blue", stroke = NA, size = 2, alpha = 0.08) +
   geom_line(data = e_all_lmer, aes(x, predicted), color = "darkorange4") +
   geom_line(data = e_all_lm, aes(x, predicted)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
@@ -129,7 +131,8 @@ p1 + guide_area() + p2 + p3 + plot_layout(guides = "collect", design = "AAB#\nCC
 # Then, save as correlation.pdf (6 * 6 inches)
 
 ggplot() +
-  geom_point(data = d_gen_mean, aes(T_trans, Index0_trans), color = "blue", alpha = 0.7) +
+  geom_point(data = d_gen_mean, aes(T_trans, Index0_trans),
+             color = "blue", stroke = NA, size = 2, alpha = 0.7) +
   geom_ribbon(data = e_gen, aes(x, ymin = conf.low, ymax = conf.high), alpha = 0.35) +
   geom_line(data = e_gen, aes(x, predicted)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
@@ -158,26 +161,26 @@ summary(m_s_wl_all)
 summary(m_t_wl_all)
 
 p1 <- ggplot(d_mac_med, aes(WL, Index0)) +
-  geom_point(color = "blue") +
+  geom_point(color = "blue", stroke = NA, size = 2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black")) +
   xlab('Mean word length') + ylab('MSI')
 p2 <- ggplot(d_mac_med, aes(T, WL)) +
-  geom_point(color = "blue") +
+  geom_point(color = "blue", stroke = NA, size = 2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black")) +
   xlab('MAT (°C)') + ylab('Mean word length')
 p3 <- ggplot(d_fam_mean, aes(WL, Index0_trans)) +
-  geom_point(color = "blue", alpha = 0.6) +
+  geom_point(color = "blue", stroke = NA, size = 2, alpha = 0.6) +
   geom_smooth(method = lm, color = "black", se = F) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
         axis.text.y = element_text(color = "black")) +
   xlab('Mean word length') + ylab('MSI (transformed)')
 p4 <- ggplot(d_fam_mean, aes(T_trans, WL)) +
-  geom_point(color = "blue", alpha = 0.6) +
+  geom_point(color = "blue", stroke = NA, size = 2, alpha = 0.6) +
   geom_smooth(method = lm, color = "black", se = F) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
@@ -264,7 +267,7 @@ summary(m_all_diff)
 summary(m_all_sd)
 
 p1 <- ggplot(d_fam, aes(T, T_diff)) +
-  geom_point(color = "blue", alpha = 0.7) +
+  geom_point(color = "blue", stroke = NA, size = 2, alpha = 0.7) +
   geom_smooth(method = lm, color = "black", se = F) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
@@ -273,7 +276,7 @@ p1 <- ggplot(d_fam, aes(T, T_diff)) +
   ggtitle("Families") +
   xlab("MAT") + ylab("Mean annual range")
 p2 <- ggplot(d_fam, aes(T, T_sd)) +
-  geom_point(color = "blue", alpha = 0.7) +
+  geom_point(color = "blue", stroke = NA, size = 2, alpha = 0.7) +
   geom_smooth(method = lm, color = "black", se = F) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
@@ -282,7 +285,7 @@ p2 <- ggplot(d_fam, aes(T, T_sd)) +
   ggtitle("Families") +
   xlab("MAT") + ylab("Standard deviation")
 p3 <- ggplot(d_all, aes(T, T_diff)) +
-  geom_point(color = "blue", alpha = 0.08) +
+  geom_point(color = "blue", stroke = NA, size = 2, alpha = 0.08) +
   geom_smooth(method = lm, color = "black", se = F) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
@@ -291,7 +294,7 @@ p3 <- ggplot(d_all, aes(T, T_diff)) +
   ggtitle("All Doculects") +
   xlab("MAT") + ylab("Mean annual range")
 p4 <- ggplot(d_all, aes(T, T_sd)) +
-  geom_point(color = "blue", alpha = 0.08) +
+  geom_point(color = "blue", stroke = NA, size = 2, alpha = 0.08) +
   geom_smooth(method = lm, color = "black", se = F) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
         axis.text.x = element_text(color = "black"),
@@ -359,7 +362,7 @@ print(temperature_results)
 print(word_length_results)
 
 ggplot(data = filter(d_all, Family %in% top_families), aes(T_trans, Index0_trans)) +
-  geom_point(na.rm = T, color = "blue", alpha = 0.1) +
+  geom_point(na.rm = T, color = "blue", stroke = NA, alpha = 0.15) +
   geom_smooth(method = lm, color = "black", se = F, linewidth = 0.5) +
   facet_wrap( ~ Family, labeller = labeller(Family = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
@@ -369,7 +372,7 @@ ggplot(data = filter(d_all, Family %in% top_families), aes(T_trans, Index0_trans
 # Then, save as correlation_by_family.pdf (8 * 8 inches)
 
 ggplot(data = filter(d_all, Family %in% top_families), aes(WL, Index0_trans)) +
-  geom_point(na.rm = T, color = "blue", alpha = 0.1) +
+  geom_point(na.rm = T, color = "blue", stroke = NA, alpha = 0.15) +
   geom_smooth(method = lm, color = "black", se = F, linewidth = 0.5) +
   facet_wrap( ~ Family, labeller = labeller(Family = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
@@ -412,7 +415,7 @@ p3 <- ggplot(d_vow, aes(merge_vowels, double_monophthongs)) +
         axis.text.y = element_text(color = "black")) +
   xlab("MSI B (merge vowels)") + ylab("MSI C (double monophthongs)")
 gridExtra::grid.arrange(p1, p2, p3, ncol = 2)
-# Then, save as vowel_length_solutions.pdf (8 * 8 inches)
+# Then, save as vowel_length_solutions.pdf (6 * 6 inches)
 
 
 # Appendix: Compare MSIs by this model and by the LingPy model
