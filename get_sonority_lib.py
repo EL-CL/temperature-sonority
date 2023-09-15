@@ -16,6 +16,7 @@ doculects_to_exclude = [
     # Having very few vowels
     'Ugaritic',
 ]
+VOWELS = '3iueEoa'
 
 
 def open_doculects(raw_dir):
@@ -115,12 +116,11 @@ def get_phone_counts(doculects):
 
 
 def get_word_structures(doculects):
-    set_token2index(0, 1)  # Use C-V map
     result = {}
     for doculect in doculects:
         for synset in doculect.synsets:
             for word in synset.words:
-                word = ''.join(['V' if phone2index(i) > 6 else 'C'
+                word = ''.join(['V' if i[0] in VOWELS else 'C'
                                 for i in word2phones(word.form)])
                 result[word] = result.get(word, 0) + 1
     print('Total types of word structures:', len(result))
