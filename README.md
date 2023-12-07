@@ -1,5 +1,9 @@
 # Temperature and Language Sonority
 
+Code and data for [Temperature shapes language sonority: Revalidation from a large dataset](https://doi.org/10.1093/pnasnexus/pgad384).
+
+[![DOI](https://zenodo.org/badge/606785745.svg)](https://zenodo.org/badge/latestdoi/606785745)
+
 ## Usage
 
 The following 5 steps can be run separately as the output of each step is already provided in this repository (see [Data](#data) below). Steps 1 and 2 require a local storage of the [ASJP dataset](https://github.com/lexibank/asjp) and the [FLDAS dataset](https://hydro1.gesdisc.eosdis.nasa.gov/data/FLDAS/FLDAS_NOAH01_C_GL_M.001/), but you can skip these two steps so you do not need to download full datasets.
